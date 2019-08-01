@@ -1,0 +1,19 @@
+C:\(svn azure)\SimioCloud\Source\AddIns\GISInterface\obj\Debug\GisAddIn.Properties.Resources.resources
+C:\(svn azure)\SimioCloud\Source\AddIns\GISInterface\obj\Debug\GisAddIn.csproj.GenerateResource.Cache
+C:\(svn azure)\SimioCloud\Source\AddIns\GISInterface\obj\Debug\GisAddIn.csproj.CoreCompileInputs.cache
+C:\(svn azure)\SimioCloud\Source\AddIns\GISInterface\obj\Debug\GisAddIn.FormGisViewer.resources
+C:\Users\dan_h\Documents\SimioUserExtensions\GisAddIn.dll
+C:\Users\dan_h\Documents\SimioUserExtensions\GisAddIn.pdb
+C:\(svn azure)\SimioCloud\Source\AddIns\GISInterface\obj\Debug\GisAddIn.dll
+C:\(svn azure)\SimioCloud\Source\AddIns\GISInterface\obj\Debug\GisAddIn.pdb
+C:\Users\dan_h\Documents\SimioUserExtensions\GisAddIn.dll.config
+C:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.csprojResolveAssemblyReference.cache
+C:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.csproj.CopyComplete
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.FormGisViewer.resources
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.Properties.Resources.resources
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.csproj.GenerateResource.cache
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.csproj.CoreCompileInputs.cache
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.dll
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.pdb
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.csproj.CopyComplete
+E:\(svn azure)\SimioCloud\Source\AddIns\GisInterface\obj\Debug\GisAddIn.csprojAssemblyReference.cache

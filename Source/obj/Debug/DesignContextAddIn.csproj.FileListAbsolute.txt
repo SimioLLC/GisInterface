@@ -1,0 +1,11 @@
+C:\(svn azure)\SimioCloud\Source\AddIns\CacheDesign\obj\Debug\DesignContextAddIn.csproj.CoreCompileInputs.cache
+C:\(svn azure)\SimioCloud\Source\AddIns\CacheDesign\obj\Debug\CacheDesignAddIn.dll
+C:\(svn azure)\SimioCloud\Source\AddIns\CacheDesign\obj\Debug\CacheDesignAddIn.pdb
+C:\Users\dan_h\Documents\SimioUserExtensions\DesignContextAddIn.dll
+C:\Users\dan_h\Documents\SimioUserExtensions\DesignContextAddIn.pdb
+C:\(svn azure)\SimioCloud\Source\AddIns\DesignContext\obj\Debug\DesignContextAddIn.Properties.Resources.resources
+C:\(svn azure)\SimioCloud\Source\AddIns\DesignContext\obj\Debug\DesignContextAddIn.csproj.GenerateResource.Cache
+C:\(svn azure)\SimioCloud\Source\AddIns\DesignContext\obj\Debug\DesignContextAddIn.csproj.CoreCompileInputs.cache
+C:\(svn azure)\SimioCloud\Source\AddIns\DesignContext\obj\Debug\DesignContextAddIn.dll
+C:\(svn azure)\SimioCloud\Source\AddIns\DesignContext\obj\Debug\DesignContextAddIn.pdb
+C:\(svn azure)\SimioCloud\Source\AddIns\DesignContext\obj\Debug\DesignContextAddIn.csprojResolveAssemblyReference.cache
