@@ -20,7 +20,12 @@ namespace GisAddIn
         /// A box that bounds all of the map objects.
         /// Needed to correctly transform coordinates to Simio.
         /// </summary>
-        public RectangleF BoundingBox { get; set; }
+        public RectangleF LonLatBoundingBox { get; set; }
+
+        /// <summary>
+        /// Scaling (x is meters/lon, y is meters/lat)
+        /// </summary>
+        public PointF SimioScaling { get; set; }
 
         /// <summary>
         /// The Origin calculated from the bounding box.

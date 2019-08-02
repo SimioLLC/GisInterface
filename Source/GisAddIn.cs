@@ -59,16 +59,13 @@ namespace GisAddIn
                 // Check to make sure a model has been opened in StrinbSimio
                 if (context.ActiveModel == null)
                 {
-                    MessageBox.Show("You must have an active model to run this add-in.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    alert("You must have an active model to run this add-in.");
                     return;
                 }
-
 
                 IModel am = context.ActiveModel;
 
                 StringBuilder sb = new StringBuilder();
-                int level = 0;
-                //sb = BuildTreeOfClasses(context.ActiveModel, level, sb);
 
                 // Get the path to the project file
                 string filepath = GetStringProperty(context.ActiveProject, "FileName");
@@ -83,17 +80,21 @@ namespace GisAddIn
                     }
                 }
 
-                File.WriteAllText(@"e:\(test)\objects.txt", sb.ToString());
+                string pathToObjects = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                pathToObjects = Path.Combine(pathToObjects, "SimioObjects.txt");
+                if ( Directory.Exists(pathToObjects))
+                {
+                    File.WriteAllText(pathToObjects, sb.ToString());
+                }
 
                 SimioMapData mapData = new SimioMapData("","");
                 SimioLocationData locData = new SimioLocationData("USAOutline");
 
+                // Query the user for map data
                 LaunchForm(mapData, locData);
 
-                string bingMapsKey = "Agggm6147gZLLYWi23uTUGW_l4APFKvhXtGnR9LHPJ5WctxwMa8GFLILaEwGaToC";
-
                 BuildSimioNodesAndPathFromMapData(context, mapData);
-                BuildSimioObjectsFromLocationData(context, mapData, locData);
+                //BuildSimioObjectsFromLocationData(context, mapData, locData);
 
             }
             catch (Exception ex)
@@ -119,8 +120,7 @@ namespace GisAddIn
             }
             catch (Exception ex)
             {
-
-                throw;
+                throw new ApplicationException($"Launch Error={ex}");
             }
         }
 
@@ -146,8 +146,8 @@ namespace GisAddIn
                 var intelligentObjects = context.ActiveModel.Facility.IntelligentObjects;
 
                 // Get scale to convert from latlon to simio meters
-                float xScale = 20f / mapData.BoundingBox.Width;
-                float yScale = xScale; // 20f / mapData.BoundingBox.Height;
+                float xScale = mapData.SimioScaling.X; // 20f / mapData.LonLatBoundingBox.Width;
+                float yScale = mapData.SimioScaling.Y; // 20f / mapData.BoundingBox.Height;
 
                 // Find the center in latlon coordinates
                 float xCenter = (float) mapData.Origin.X; // BoundingBox.Left + mapData.BoundingBox.Width /2f;
@@ -157,7 +157,7 @@ namespace GisAddIn
                 Matrix mat = new Matrix();  // Create identity matrix
                 //mat.Rotate(-90);
                 mat.Translate(-xCenter, -yCenter);  // move to origin
-                //mat.Scale(xScale, yScale); // scale to size
+                mat.Scale(xScale, yScale, MatrixOrder.Append); // scale to size
 
                 MapSegment seg = mapData.SegmentList[0];
                 FacilityLocation startLoc = GisHelpers.LatLonToFacilityLocation( mat, seg.StartLocation.Lat, seg.StartLocation.Lon);
@@ -227,62 +227,66 @@ namespace GisAddIn
             return name;
         }
 
-        private void BuildSimioObjectsFromLocationData(IDesignContext context, SimioMapData mapData, SimioLocationData locData)
-        {
-            try
-            {
-                var intelligentObjects = context.ActiveModel.Facility.IntelligentObjects;
+        ////private void BuildSimioObjectsFromLocationData(IDesignContext context, SimioMapData mapData, SimioLocationData locData)
+        ////{
+        ////    try
+        ////    {
+        ////        var intelligentObjects = context.ActiveModel.Facility.IntelligentObjects;
 
-                
-                // Create the Source, Server, and Sink. Space them out along a diagonal line. The X and Z coordinate of the location specify the left to right and top to bottom 
-                //  coordinates from a top down view. The Y coordinate specifies the elevation. We cast them to IFixedObject here so that we can get to their Nodes collection
-                //  later
+        ////        // Create the Source, Server, and Sink. Space them out along a diagonal line. The X and Z coordinate of the location specify the left to right and top to bottom 
+        ////        //  coordinates from a top down view. The Y coordinate specifies the elevation. We cast them to IFixedObject here so that we can get to their Nodes collection
+        ////        //  later
 
-                // Get scale to convert from latlon to simio meters
-                float xScale = 20f / mapData.BoundingBox.Width;
-                float yScale = xScale; // 20f / mapData.BoundingBox.Height;
+        ////        // Get scale to convert from latlon to simio meters
+        ////        float xScale = mapData.SimioScaling.X; // 20f / mapData.LonLatBoundingBox.Width;
+        ////        float yScale = mapData.SimioScaling.Y; // 20f / mapData.BoundingBox.Height;
 
-                // Find the center in latlon coordinates
-                float xCenter = (float)mapData.Origin.X; // BoundingBox.Left + mapData.BoundingBox.Width /2f;
-                float yCenter = (float)mapData.Origin.Y; // BoundingBox.Bottom - mapData.BoundingBox.Height /2f;
+        ////        // Find the center in latlon coordinates
+        ////        float xCenter = (float)mapData.Origin.X; // BoundingBox.Left + mapData.BoundingBox.Width /2f;
+        ////        float yCenter = (float)mapData.Origin.Y; // BoundingBox.Bottom - mapData.BoundingBox.Height /2f;
 
-                // Build a transformation matrix
-                Matrix mat = new Matrix();  // Create identity matrix
-                mat.Translate(-xCenter, -yCenter);  // move to origin
+        ////        // Build a transformation matrix
+        ////        Matrix mat = new Matrix();  // Create identity matrix
+        ////        mat.Translate(-xCenter, -yCenter);  // move to origin
 
-                MapCoordinate coord = locData.CoordinateList[0];
-                FacilityLocation startLoc = GisHelpers.LatLonToFacilityLocation(mat, coord.Lat, coord.Lon);
+        ////        if ( locData.CoordinateList.Count == 0 )
+        ////        {
+        ////            return;
+        ////        }
 
-                coord = locData.CoordinateList[locData.CoordinateList.Count - 1];
-                FacilityLocation endLoc = GisHelpers.LatLonToFacilityLocation(mat, coord.Lat, coord.Lon);
+        ////        MapCoordinate coord = locData.CoordinateList[0];
+        ////        FacilityLocation startLoc = GisHelpers.LatLonToFacilityLocation(mat, coord.Lat, coord.Lon);
 
-                var node1 = intelligentObjects.CreateObject("BasicNode", startLoc) as INodeObject;
-                node1.ObjectName = mapData.StartName;
+        ////        coord = locData.CoordinateList[locData.CoordinateList.Count - 1];
+        ////        FacilityLocation endLoc = GisHelpers.LatLonToFacilityLocation(mat, coord.Lat, coord.Lon);
 
-                var node2 = intelligentObjects.CreateObject("BasicNode", endLoc) as INodeObject;
-                node2.ObjectName = mapData.EndName;
+        ////        var node1 = intelligentObjects.CreateObject("BasicNode", startLoc) as INodeObject;
+        ////        node1.ObjectName = mapData.StartName;
 
-                // Build a path from node1 to node2
-                List<FacilityLocation> pathList = new List<FacilityLocation>();
-                pathList.Add(node1.Location);
+        ////        var node2 = intelligentObjects.CreateObject("BasicNode", endLoc) as INodeObject;
+        ////        node2.ObjectName = mapData.EndName;
 
-                MapCoordinate lastCoord = null;
-                foreach (MapCoordinate thisCoord in locData.CoordinateList)
-                {
-                    if (lastCoord != null)
-                    {
-                        pathList.Add(GisHelpers.LatLonToFacilityLocation(mat, lastCoord.Lat, thisCoord.Lon));
-                    }
-                    lastCoord = thisCoord;
-                }
+        ////        // Build a path from node1 to node2
+        ////        List<FacilityLocation> pathList = new List<FacilityLocation>();
+        ////        pathList.Add(node1.Location);
 
-                var path3 = intelligentObjects.CreateLink("Path", (INodeObject)node1, (INodeObject)node2, pathList);
-            }
-            catch (Exception ex)
-            {
-                string xx = "";
-            }
-        }
+        ////        MapCoordinate lastCoord = null;
+        ////        foreach (MapCoordinate thisCoord in locData.CoordinateList)
+        ////        {
+        ////            if (lastCoord != null)
+        ////            {
+        ////                pathList.Add(GisHelpers.LatLonToFacilityLocation(mat, lastCoord.Lat, thisCoord.Lon));
+        ////            }
+        ////            lastCoord = thisCoord;
+        ////        }
+
+        ////        var path3 = intelligentObjects.CreateLink("Path", (INodeObject)node1, (INodeObject)node2, pathList);
+        ////    }
+        ////    catch (Exception ex)
+        ////    {
+        ////        alert($"Err={ex}");
+        ////    }
+        ////}
 
         /// <summary>
         /// Use reflection to get a string value.
@@ -357,5 +361,9 @@ namespace GisAddIn
             }
         }
 
+        private void alert(string message)
+        {
+            MessageBox.Show(message);
+        }
     }
 }
