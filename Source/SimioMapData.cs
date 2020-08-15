@@ -7,14 +7,27 @@ using System.Threading.Tasks;
 
 namespace GisAddIn
 {
-    /// <summary>
-    /// A rather arbitrary canonical form, so we can get map data into a consistent
-    /// and simple form regardless of what Map Source is chosen.
-    /// All of the coordinates are latitude/longitude, but for x,y are reordered to lon,lat.
-    /// </summary>
-    public class SimioMapData
+
+    public class SimioMapRoutes
     {
-        public List<MapSegment> SegmentList { get; set; }
+        public string Name { get; set; }
+
+        public List<SimioMapRoute> RouteList { get; set; }
+
+        public SimioMapRoutes(string name)
+        {
+            this.Name = name;
+            RouteList = new List<SimioMapRoute>();
+        }
+
+    }
+
+    /// <summary>
+    /// Used to convert standard Map routing data to coordinates/names
+    /// suitable for Simio Facility view.
+    /// </summary>
+    public class SimioMapTransform
+    {
 
         /// <summary>
         /// A box that bounds all of the map objects.
@@ -22,28 +35,103 @@ namespace GisAddIn
         /// </summary>
         public RectangleF LonLatBoundingBox { get; set; }
 
+        public PointF BoxCenter { get; set; }
+        
         /// <summary>
         /// Scaling (x is meters/lon, y is meters/lat)
         /// </summary>
         public PointF SimioScaling { get; set; }
 
         /// <summary>
-        /// The Origin calculated from the bounding box.
-        /// Used to center the objects.
+        /// The Simio Facility origin.
         /// </summary>
         public PointF Origin { get; set; }
 
+
         /// <summary>
-        /// A human name for the Start
+        /// Build the bounding box that Simio will use to visualize the data.
+        /// Also calculates the origin.
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="width"></param>
+        /// <param name="height"></param>
+        /// <returns></returns>
+        public RectangleF BuildBoundingBox(string x, string y, string width, string height)
+        {
+            try
+            {
+                float xx = float.Parse(x);
+                float yy = float.Parse(y);
+                float ww = float.Parse(width);
+                float hh = float.Parse(height);
+                this.LonLatBoundingBox = new RectangleF(xx, yy, ww, hh);
+
+                this.BoxCenter = new PointF(xx + ww / 2f, yy + hh / 2f);
+
+                return LonLatBoundingBox;
+
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"Cannot build bounding box. Err={ex.Message}");
+            }
+        }
+
+        public PointF BuildSimioScaling(string longitude, string latitude)
+        {
+            try
+            {
+                float scaleX = float.Parse(longitude);
+                float scaleY = float.Parse(latitude);
+                this.SimioScaling = new PointF(scaleX, scaleY);
+                return SimioScaling;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"Cannot build bounding box. Err={ex.Message}");
+            }
+        }
+
+        public PointF BuildSimioOrigin(string facilityX, string facilityY)
+        {
+            try
+            {
+                float xx = float.Parse(facilityX);
+                float yy = float.Parse(facilityY);
+                this.Origin = new PointF(xx, yy);
+                return this.Origin;
+            }
+            catch (Exception ex)
+            {
+                throw new ApplicationException($"Cannot build bounding box. Err={ex.Message}");
+            }
+        }
+
+
+    }
+
+    /// <summary>
+    /// A multi-segment route from an origin to a destination
+    /// A rather arbitrary canonical form, so we can get map data into a consistent
+    /// and simple form regardless of what Map Source is chosen.
+    /// All of the coordinates are latitude/longitude, but for Simio x,y are reordered to lon,lat.
+    /// </summary>
+    public class SimioMapRoute
+    {
+        public List<MapSegment> SegmentList { get; set; }
+
+        /// <summary>
+        /// A human name for the Start of the Route
         /// </summary>
         public string StartName { get; set; }
 
         /// <summary>
-        /// A human name for the End
+        /// A human name for the End of the Route
         /// </summary>
         public string EndName { get; set; }
 
-        public SimioMapData(string startLocation, string endLocation)
+        public SimioMapRoute(string startLocation, string endLocation)
         {
             SegmentList = new List<MapSegment>();
             StartName = startLocation;
@@ -71,24 +159,25 @@ namespace GisAddIn
         }
     }
 
+    /////// <summary>
+    /////// A class to hold coordinate information, such as those obtained from GeoCode resolution.
+    /////// </summary>
+    ////public class SimioLocationData
+    ////{
+    ////    public string Name { get; set; }
+
+    ////    public List<MapCoordinate> CoordinateList;
+
+    ////    public SimioLocationData(string name)
+    ////    {
+    ////        CoordinateList = new List<MapCoordinate>();
+    ////    }
+    ////}
+
+
     /// <summary>
-    /// A class to hold coordinate information, such as those obtained from GeoCode resolution.
-    /// </summary>
-    public class SimioLocationData
-    {
-        public string Name { get; set; }
-
-        public List<MapCoordinate> CoordinateList;
-
-        public SimioLocationData(string name)
-        {
-            CoordinateList = new List<MapCoordinate>();
-        }
-    }
-
-
-    /// <summary>
-    /// A segment of a path, consisting of a Start and End MapCoordinate.
+    /// A segment of a path, consisting of a Start and End MapCoordinate,
+    /// and perhaps other data (time/duration) as well
     /// The 'start' of a segment (except the first) should always be equal to the 'end' of the previous segment.
     /// </summary>
     public class MapSegment
@@ -108,11 +197,18 @@ namespace GisAddIn
         /// </summary>
         public MapCoordinate EndLocation { get; set; }
 
+        public int Duration { get; set; }
+
+        public int Distance { get; set; }
+
         public MapSegment(int index, MapCoordinate start, MapCoordinate end)
         {
             this.Index = index;
             this.StartLocation = start;
             this.EndLocation = end;
+
+            this.Distance = 0;
+            this.Duration = 0;
         }
 
         public override string ToString()

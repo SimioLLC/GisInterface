@@ -87,13 +87,12 @@ namespace GisAddIn
                     File.WriteAllText(pathToObjects, sb.ToString());
                 }
 
-                SimioMapData mapData = new SimioMapData("","");
-                SimioLocationData locData = new SimioLocationData("USAOutline");
+                SimioMapRoute mapData = new SimioMapRoute("","");
 
                 // Query the user for map data
-                LaunchForm(mapData, locData);
+                LaunchForm(context, mapData);
 
-                BuildSimioNodesAndPathFromMapData(context, mapData);
+                //BuildSimioNodesAndPathFromMapData(context, mapData, transform);
                 //BuildSimioObjectsFromLocationData(context, mapData, locData);
 
             }
@@ -106,16 +105,17 @@ namespace GisAddIn
             }
         }
 
-        private void LaunchForm(SimioMapData mapData, SimioLocationData locData)
+        private void LaunchForm(IDesignContext context, SimioMapRoute mapData )
         {
             try
             {
                 FormGisViewer FormViewer = new FormGisViewer();
 
-                FormViewer.MapData = mapData;
-                FormViewer.LocationData = locData;
+                FormViewer.DesignContext = context;
+                FormViewer.MapRoute = mapData;
+////                FormViewer.LocationData = locData;
 
-                FormViewer.ShowDialog();
+                FormViewer.Show();
 
             }
             catch (Exception ex)
@@ -128,13 +128,13 @@ namespace GisAddIn
 
 
         /// <summary>
-        /// This will create a route from the given SimioMapData object 
+        /// This will create a route from the given SimioMapRoute object 
         /// by building two nodes (start and stop) and a path between them, 
         /// and also attaching the start to a Source and the stop to a Sink.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="mapData"></param>
-        private void BuildSimioNodesAndPathFromMapData(IDesignContext context, SimioMapData mapData)
+        private void BuildSimioNodesAndPathFromMapData(IDesignContext context, SimioMapRoute mapData, SimioMapTransform transform)
         {
             try
             {
@@ -146,12 +146,12 @@ namespace GisAddIn
                 var intelligentObjects = context.ActiveModel.Facility.IntelligentObjects;
 
                 // Get scale to convert from latlon to simio meters
-                float xScale = mapData.SimioScaling.X; // 20f / mapData.LonLatBoundingBox.Width;
-                float yScale = mapData.SimioScaling.Y; // 20f / mapData.BoundingBox.Height;
+                float xScale = transform.SimioScaling.X; // 20f / mapData.LonLatBoundingBox.Width;
+                float yScale = transform.SimioScaling.Y; // 20f / mapData.BoundingBox.Height;
 
                 // Find the center in latlon coordinates
-                float xCenter = (float) mapData.Origin.X; // BoundingBox.Left + mapData.BoundingBox.Width /2f;
-                float yCenter = (float) mapData.Origin.Y; // BoundingBox.Bottom - mapData.BoundingBox.Height /2f;
+                float xCenter = (float) transform.Origin.X; // BoundingBox.Left + mapData.BoundingBox.Width /2f;
+                float yCenter = (float) transform.Origin.Y; // BoundingBox.Bottom - mapData.BoundingBox.Height /2f;
 
                 // Build a transformation matrix
                 Matrix mat = new Matrix();  // Create identity matrix
@@ -227,7 +227,7 @@ namespace GisAddIn
             return name;
         }
 
-        ////private void BuildSimioObjectsFromLocationData(IDesignContext context, SimioMapData mapData, SimioLocationData locData)
+        ////private void BuildSimioObjectsFromLocationData(IDesignContext context, SimioMapRoute mapData, SimioLocationData locData)
         ////{
         ////    try
         ////    {
@@ -310,8 +310,8 @@ namespace GisAddIn
                     {
                         if (pi.Name == propertyName)
                         {
-                            string stringValue = pi.GetValue(obj, null).ToString();
-                            return stringValue;
+                            var vv = pi.GetValue(obj, null);
+                            return (vv ?? "").ToString();
                         }
                     }
 
