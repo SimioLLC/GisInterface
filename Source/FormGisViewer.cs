@@ -1517,7 +1517,7 @@ namespace GisAddIn
             try
             {
                 OpenFileDialog dialog = new OpenFileDialog();
-                dialog.Filter = "json files (*.json)|*.json";
+                dialog.Filter = "json Files (*.json)|*.json";
                 dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 dialog.CheckFileExists = true;
 
@@ -1716,7 +1716,6 @@ namespace GisAddIn
                             alert($"Unsupported Map Source={comboGisSource.Text}");
                             return;
                         }
-                        break;
 
                 }
 
@@ -1731,6 +1730,7 @@ namespace GisAddIn
                     dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     dialog.OverwritePrompt = true;
                     dialog.FileName = "";
+                    dialog.Filter = "json Files (*.json)|*.json";
 
                     DialogResult result = dialog.ShowDialog();
 
@@ -1888,7 +1888,7 @@ namespace GisAddIn
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                 dialog.CheckFileExists = true;
-                dialog.Filter = "JSON file (*.json)|*.json";
+                dialog.Filter = "json Files (*.json)|*.json";
 
                 DialogResult result = dialog.ShowDialog();
                 if (result != DialogResult.OK)
