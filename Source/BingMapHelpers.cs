@@ -10,8 +10,16 @@ using System.Threading.Tasks;
 
 namespace GisAddIn
 {
+    /// <summary>
+    /// Bing Map Provider
+    /// </summary>
     public class BingMapHelpers : IMapHelper
     {
+
+        public string GetProviderInformation()
+        {
+            return $"Bing Maps.";
+        }
         /// <summary>
         /// An asynchronous fetch of a map route (untested)
         /// </summary>

@@ -9,6 +9,8 @@ namespace GisAddIn
     {
         public string Name { get; set; }
 
+        public string ProviderInformation { get; set; }
+
         public List<SimioMapRoute> RouteList { get; set; }
 
         public SimioMapRoutes(string name)

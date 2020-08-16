@@ -1714,9 +1714,15 @@ namespace GisAddIn
                     default:
                         {
                             alert($"Unsupported Map Source={comboGisSource.Text}");
+                            return;
                         }
                         break;
 
+                }
+
+                if ( string.IsNullOrEmpty(explanation))
+                {
+                    alert($"Routes were processed with some Errors: {explanation}");
                 }
 
                 if ( mapRoutes != null && mapRoutes.RouteList.Any())
@@ -1751,7 +1757,8 @@ namespace GisAddIn
 
 
         /// <summary>
-        /// Get the coordinate file and process the data to build Simio objects.
+        /// Get the coordinate file and process the data to build Simio map route objects.
+        /// If any are found, return is true, but unfound addresses are reported in explanation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1764,11 +1771,15 @@ namespace GisAddIn
             int lineNbr = 0;
             mapRoutes = null;
 
+            StringBuilder sbErrors = new StringBuilder();
+
             Cursor.Current = Cursors.WaitCursor;
             try
             {
                 string name = Path.GetFileNameWithoutExtension(path);
                 mapRoutes = new SimioMapRoutes(name);
+
+                mapRoutes.ProviderInformation = mapHelper.GetProviderInformation();
 
                 //Todo: Add processing
                 if (string.IsNullOrEmpty(comboGisSource.Text))
@@ -1793,12 +1804,13 @@ namespace GisAddIn
                         out SimioMapRoute mapRoute,
                         out string requestUrl, out explanation))
                     {
-                        throw new ApplicationException($"Cannot Get Route. Err={explanation}");
+                        sbErrors.AppendLine($"Cannot Get Route. Err={explanation}");
                     }
 
                     mapRoutes.RouteList.Add(mapRoute);
-
                 }
+
+                explanation = sbErrors.ToString();
                 return true;
 
             }

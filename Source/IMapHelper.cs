@@ -42,5 +42,10 @@ namespace GisAddIn
             out SimioMapRoute mapRoute,
             out string requestUrl, out string explanation);
 
+        /// <summary>
+        /// Information about the provider.
+        /// </summary>
+        /// <returns></returns>
+        string GetProviderInformation();
     }
 }

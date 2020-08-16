@@ -16,8 +16,15 @@ using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace GisAddIn
 {
+    /// <summary>
+    /// Google Map Provider
+    /// </summary>
     public class GoogleMapHelpers : IMapHelper
     {
+        public string GetProviderInformation()
+        {
+            return $"Google Maps.";
+        }
 
         /// <summary>
         /// An asynchronous fetch of a map route (untested)
