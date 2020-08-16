@@ -32,8 +32,8 @@ namespace GisAddIn
         /// <summary>
         /// A fetch of a map route from this map provider, for a textual origin and destination address
         /// (e.g. address, city state-abbr zip)
-        /// A Lat/Lon box is provided as well as scaling.
-        /// The method places the resulting computation in the SimioMapRoute structure.
+        /// The method places the resulting computation in the SimioMapRoute object.
+        /// For diagnostics, the requestUrl to the map provider is returned (if available)
         /// </summary>
         /// <param name="mapData"></param>
         /// <param name="googleMapsKey"></param>
