@@ -88,15 +88,20 @@ namespace GisAddIn
                             lon = step.EndLocation.Longitude;
 
                             MapCoordinate mcEnd = new MapCoordinate(lat, lon);
+                            MapSegment segment = null; 
 
                             if (ii == 0)
                             {
-                                mapRoute.AddFirstSegment(mcStart, mcEnd);
+                                segment = mapRoute.AddFirstSegment(mcStart, mcEnd);
                             }
                             else
                             {
-                                mapRoute.AppendSegment(mcEnd);
+                                segment = mapRoute.AppendSegment(mcEnd);
                             }
+
+                            // Now add Google-specific information
+                            segment.Distance = step.Distance.Value;
+                            segment.Duration = step.Duration.Value;
 
                             ii++;
                             sb.AppendLine($"Instructions={step.HtmlInstructions} Distance={step.Distance.Text} >> {step.Duration.Text}");

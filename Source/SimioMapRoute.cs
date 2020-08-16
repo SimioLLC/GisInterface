@@ -67,19 +67,23 @@ namespace GisAddIn
         /// </summary>
         /// <param name="start"></param>
         /// <param name="end"></param>
-        public void AddFirstSegment( MapCoordinate start, MapCoordinate end)
+        public MapSegment AddFirstSegment( MapCoordinate start, MapCoordinate end)
         {
             SegmentList.Clear();
 
             MapSegment segment = new MapSegment(0, start, end);
             SegmentList.Add(segment);
+
+            return segment;
         }
 
-        public void AppendSegment( MapCoordinate end)
+        public MapSegment AppendSegment( MapCoordinate end)
         {
             MapSegment lastSegment = SegmentList.OrderByDescending(ii => ii.Index).FirstOrDefault();
             MapSegment segment = new MapSegment(lastSegment.Index+1, lastSegment.EndLocation, end);
             SegmentList.Add(segment);
+
+            return segment;
         }
     }
 }

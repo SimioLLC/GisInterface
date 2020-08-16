@@ -22,9 +22,9 @@
         /// </summary>
         public MapCoordinate EndLocation { get; set; }
 
-        public int Duration { get; set; }
+        public double Duration { get; set; }
 
-        public int Distance { get; set; }
+        public double Distance { get; set; }
 
         public MapSegment(int index, MapCoordinate start, MapCoordinate end)
         {

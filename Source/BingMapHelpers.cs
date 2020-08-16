@@ -339,15 +339,19 @@ namespace GisAddIn
                             lon = route.RoutePath.Line.Coordinates[idxEnd][1];
 
                             MapCoordinate mcEnd = new MapCoordinate(lat, lon);
-
+                            MapSegment segment = null;
                             if (ii == 0)
                             {
-                                mapRoute.AddFirstSegment(mcStart, mcEnd);
+                                segment = mapRoute.AddFirstSegment(mcStart, mcEnd);
                             }
                             else
                             {
-                                mapRoute.AppendSegment(mcEnd);
+                                segment = mapRoute.AppendSegment(mcEnd);
                             }
+
+                            // Now add Bing-specific info
+                            segment.Distance = item.TravelDistance;
+                            segment.Duration = item.TravelDuration;
                         }
                         sb.AppendLine($"Compass={item.CompassDirection} Distance={item.TravelDistance} >> {item.Instruction.Text}");
                     } // for each itinerary
