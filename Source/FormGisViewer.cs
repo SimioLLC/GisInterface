@@ -663,6 +663,8 @@ namespace GisAddIn
             // 
             // textGoogleMapsKey
             // 
+            this.textGoogleMapsKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textGoogleMapsKey.Location = new System.Drawing.Point(145, 62);
             this.textGoogleMapsKey.Name = "textGoogleMapsKey";
             this.textGoogleMapsKey.Size = new System.Drawing.Size(640, 23);
@@ -1422,6 +1424,7 @@ namespace GisAddIn
                     return;
                 }
 
+                MapRoute = mapRoute;
                 textBingMapsRequestUrl.Text = requestUrl;
                 textBingMapsResponse.Text = explanation;
 

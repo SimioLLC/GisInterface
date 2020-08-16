@@ -1,9 +1,0 @@
-C:\Users\GlenWirth\Documents\SimioUserExtensions\ExportImportModelAddIn.dll
-E:\Downloads\Simio\ExportImportModel_Code\ExportImportModel\obj\Debug\ExportImportModelAddIn.ExportImportModelForm.resources
-E:\Downloads\Simio\ExportImportModel_Code\ExportImportModel\obj\Debug\ExportImportModelAddIn.Properties.Resources.resources
-E:\Downloads\Simio\ExportImportModel_Code\ExportImportModel\obj\Debug\ExportImportModelAddIn.StatusWindow.resources
-E:\Downloads\Simio\ExportImportModel_Code\ExportImportModel\obj\Debug\ExportImportModelAddIn.csproj.GenerateResource.Cache
-E:\Downloads\Simio\ExportImportModel_Code\ExportImportModel\obj\Debug\ExportImportModelAddIn.csproj.CoreCompileInputs.cache
-E:\Downloads\Simio\ExportImportModel_Code\ExportImportModel\obj\Debug\ExportImportModelAddIn.dll
-E:\Downloads\Simio\ExportImportModel_Code\ExportImportModel\obj\Debug\ExportImportModelAddIn.pdb
-C:\Users\GlenWirth\Documents\SimioUserExtensions\ExportImportModelAddIn.pdb

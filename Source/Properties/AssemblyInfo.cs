@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Simio, LLC")]
 [assembly: AssemblyProduct("GisAddIn")]
-[assembly: AssemblyCopyright("Copyright 2018-2019 Simio LLC")]
+[assembly: AssemblyCopyright("Copyright 2018-2020 Simio LLC")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,5 +33,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("19.8.1.0")]
-[assembly: AssemblyFileVersion("19.8.1.0")]
+[assembly: AssemblyVersion("20.8.16.0")]
+[assembly: AssemblyFileVersion("20.8.16.0")]
