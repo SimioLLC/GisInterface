@@ -101,7 +101,6 @@ namespace GisAddIn
         private TextBox textGoogleMapsKey;
         private Label label22;
         private TextBox textGoogleMapsTo;
-        private ToolStripMenuItem buildToSimioToolStripMenuItem;
         private GroupBox groupAddressPairs;
         private GroupBox groupApplyRoutes;
         private Button buttonApplyRouteFile;
@@ -119,6 +118,7 @@ namespace GisAddIn
         private Label label26;
         private TextBox textFacilityY;
         private TextBox textFacilityX;
+        private ToolStripMenuItem aboutToolStripMenuItem;
         private TabPage tabGisResults;
 
 
@@ -170,7 +170,6 @@ namespace GisAddIn
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGisViewer));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buildToSimioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -269,6 +268,7 @@ namespace GisAddIn
             this.labelInstructions = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -299,41 +299,35 @@ namespace GisAddIn
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.closeToolStripMenuItem,
-            this.buildToSimioToolStripMenuItem});
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1131, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(1131, 36);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(60, 25);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(73, 32);
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click_2);
-            // 
-            // buildToSimioToolStripMenuItem
-            // 
-            this.buildToSimioToolStripMenuItem.Name = "buildToSimioToolStripMenuItem";
-            this.buildToSimioToolStripMenuItem.Size = new System.Drawing.Size(128, 25);
-            this.buildToSimioToolStripMenuItem.Text = "&Build to Simio...";
             // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.labelStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 687);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 683);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1131, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1131, 26);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // labelStatus
             // 
             this.labelStatus.Name = "labelStatus";
-            this.labelStatus.Size = new System.Drawing.Size(16, 17);
+            this.labelStatus.Size = new System.Drawing.Size(18, 20);
             this.labelStatus.Text = "...";
             // 
             // tabControl1
@@ -350,16 +344,16 @@ namespace GisAddIn
             this.tabControl1.Location = new System.Drawing.Point(0, 61);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1131, 597);
+            this.tabControl1.Size = new System.Drawing.Size(1131, 586);
             this.tabControl1.TabIndex = 2;
             // 
             // tabBingMaps
             // 
             this.tabBingMaps.Controls.Add(this.panel1);
-            this.tabBingMaps.Location = new System.Drawing.Point(4, 26);
+            this.tabBingMaps.Location = new System.Drawing.Point(4, 29);
             this.tabBingMaps.Name = "tabBingMaps";
             this.tabBingMaps.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBingMaps.Size = new System.Drawing.Size(1123, 567);
+            this.tabBingMaps.Size = new System.Drawing.Size(1123, 553);
             this.tabBingMaps.TabIndex = 0;
             this.tabBingMaps.Text = "Bing Maps";
             this.tabBingMaps.UseVisualStyleBackColor = true;
@@ -383,7 +377,7 @@ namespace GisAddIn
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1117, 561);
+            this.panel1.Size = new System.Drawing.Size(1117, 547);
             this.panel1.TabIndex = 11;
             // 
             // buttonBingApplyRoute
@@ -416,7 +410,7 @@ namespace GisAddIn
             this.labelBingNote.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBingNote.Location = new System.Drawing.Point(19, 49);
             this.labelBingNote.Name = "labelBingNote";
-            this.labelBingNote.Size = new System.Drawing.Size(766, 17);
+            this.labelBingNote.Size = new System.Drawing.Size(911, 20);
             this.labelBingNote.TabIndex = 11;
             this.labelBingNote.Text = "Note: Get your free key from Microsoft Bing Maps ( search \"Getting a Bing Maps Ke" +
     "y\")  and paste it in the textbox above.";
@@ -426,7 +420,7 @@ namespace GisAddIn
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(19, 15);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 17);
+            this.label3.Size = new System.Drawing.Size(112, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "BingMapsKey";
             // 
@@ -435,7 +429,7 @@ namespace GisAddIn
             this.labelRequestUrl.AutoSize = true;
             this.labelRequestUrl.Location = new System.Drawing.Point(19, 185);
             this.labelRequestUrl.Name = "labelRequestUrl";
-            this.labelRequestUrl.Size = new System.Drawing.Size(93, 17);
+            this.labelRequestUrl.Size = new System.Drawing.Size(110, 20);
             this.labelRequestUrl.TabIndex = 10;
             this.labelRequestUrl.Text = "Request URL";
             // 
@@ -456,7 +450,7 @@ namespace GisAddIn
             this.labelFrom.AutoSize = true;
             this.labelFrom.Location = new System.Drawing.Point(19, 101);
             this.labelFrom.Name = "labelFrom";
-            this.labelFrom.Size = new System.Drawing.Size(40, 17);
+            this.labelFrom.Size = new System.Drawing.Size(48, 20);
             this.labelFrom.TabIndex = 0;
             this.labelFrom.Text = "From";
             // 
@@ -465,7 +459,7 @@ namespace GisAddIn
             this.labelResponse.AutoSize = true;
             this.labelResponse.Location = new System.Drawing.Point(19, 322);
             this.labelResponse.Name = "labelResponse";
-            this.labelResponse.Size = new System.Drawing.Size(72, 17);
+            this.labelResponse.Size = new System.Drawing.Size(84, 20);
             this.labelResponse.TabIndex = 6;
             this.labelResponse.Text = "Response";
             // 
@@ -473,7 +467,7 @@ namespace GisAddIn
             // 
             this.textBingMapsFrom.Location = new System.Drawing.Point(143, 101);
             this.textBingMapsFrom.Name = "textBingMapsFrom";
-            this.textBingMapsFrom.Size = new System.Drawing.Size(201, 23);
+            this.textBingMapsFrom.Size = new System.Drawing.Size(201, 27);
             this.textBingMapsFrom.TabIndex = 1;
             this.textBingMapsFrom.Text = "Seattle, WA";
             // 
@@ -504,7 +498,7 @@ namespace GisAddIn
             // 
             this.textBingMapsKey.Location = new System.Drawing.Point(143, 12);
             this.textBingMapsKey.Name = "textBingMapsKey";
-            this.textBingMapsKey.Size = new System.Drawing.Size(640, 23);
+            this.textBingMapsKey.Size = new System.Drawing.Size(640, 27);
             this.textBingMapsKey.TabIndex = 7;
             // 
             // label1
@@ -512,7 +506,7 @@ namespace GisAddIn
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(19, 141);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 17);
+            this.label1.Size = new System.Drawing.Size(28, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "To";
             // 
@@ -520,7 +514,7 @@ namespace GisAddIn
             // 
             this.textBingMapsTo.Location = new System.Drawing.Point(143, 138);
             this.textBingMapsTo.Name = "textBingMapsTo";
-            this.textBingMapsTo.Size = new System.Drawing.Size(201, 23);
+            this.textBingMapsTo.Size = new System.Drawing.Size(201, 27);
             this.textBingMapsTo.TabIndex = 2;
             this.textBingMapsTo.Text = "Key West, FL";
             // 
@@ -540,9 +534,9 @@ namespace GisAddIn
             this.tabGoogleMaps.Controls.Add(this.textGoogleMapsKey);
             this.tabGoogleMaps.Controls.Add(this.label22);
             this.tabGoogleMaps.Controls.Add(this.textGoogleMapsTo);
-            this.tabGoogleMaps.Location = new System.Drawing.Point(4, 26);
+            this.tabGoogleMaps.Location = new System.Drawing.Point(4, 29);
             this.tabGoogleMaps.Name = "tabGoogleMaps";
-            this.tabGoogleMaps.Size = new System.Drawing.Size(1123, 567);
+            this.tabGoogleMaps.Size = new System.Drawing.Size(1123, 564);
             this.tabGoogleMaps.TabIndex = 2;
             this.tabGoogleMaps.Text = "Google Maps";
             this.tabGoogleMaps.UseVisualStyleBackColor = true;
@@ -577,7 +571,7 @@ namespace GisAddIn
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(21, 99);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(729, 17);
+            this.label5.Size = new System.Drawing.Size(860, 20);
             this.label5.TabIndex = 25;
             this.label5.Text = "Note: Get your free key from Google Maps ( search \"Getting Google Maps Key\")  and" +
     " paste it in the textbox above.";
@@ -587,7 +581,7 @@ namespace GisAddIn
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(21, 65);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(112, 17);
+            this.label15.Size = new System.Drawing.Size(131, 20);
             this.label15.TabIndex = 22;
             this.label15.Text = "GoogleMapsKey";
             // 
@@ -596,7 +590,7 @@ namespace GisAddIn
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(21, 235);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(93, 17);
+            this.label19.Size = new System.Drawing.Size(110, 20);
             this.label19.TabIndex = 24;
             this.label19.Text = "Request URL";
             // 
@@ -617,7 +611,7 @@ namespace GisAddIn
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(21, 151);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(40, 17);
+            this.label20.Size = new System.Drawing.Size(48, 20);
             this.label20.TabIndex = 14;
             this.label20.Text = "From";
             // 
@@ -626,7 +620,7 @@ namespace GisAddIn
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(21, 372);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(72, 17);
+            this.label21.Size = new System.Drawing.Size(84, 20);
             this.label21.TabIndex = 20;
             this.label21.Text = "Response";
             // 
@@ -634,7 +628,7 @@ namespace GisAddIn
             // 
             this.textGoogleMapsFrom.Location = new System.Drawing.Point(145, 151);
             this.textGoogleMapsFrom.Name = "textGoogleMapsFrom";
-            this.textGoogleMapsFrom.Size = new System.Drawing.Size(201, 23);
+            this.textGoogleMapsFrom.Size = new System.Drawing.Size(201, 27);
             this.textGoogleMapsFrom.TabIndex = 15;
             this.textGoogleMapsFrom.Text = "Seattle, WA";
             // 
@@ -667,7 +661,7 @@ namespace GisAddIn
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textGoogleMapsKey.Location = new System.Drawing.Point(145, 62);
             this.textGoogleMapsKey.Name = "textGoogleMapsKey";
-            this.textGoogleMapsKey.Size = new System.Drawing.Size(640, 23);
+            this.textGoogleMapsKey.Size = new System.Drawing.Size(640, 27);
             this.textGoogleMapsKey.TabIndex = 21;
             // 
             // label22
@@ -675,7 +669,7 @@ namespace GisAddIn
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(21, 191);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(25, 17);
+            this.label22.Size = new System.Drawing.Size(28, 20);
             this.label22.TabIndex = 18;
             this.label22.Text = "To";
             // 
@@ -683,16 +677,16 @@ namespace GisAddIn
             // 
             this.textGoogleMapsTo.Location = new System.Drawing.Point(145, 188);
             this.textGoogleMapsTo.Name = "textGoogleMapsTo";
-            this.textGoogleMapsTo.Size = new System.Drawing.Size(201, 23);
+            this.textGoogleMapsTo.Size = new System.Drawing.Size(201, 27);
             this.textGoogleMapsTo.TabIndex = 16;
             this.textGoogleMapsTo.Text = "Key West, FL";
             // 
             // tabArcGIS
             // 
             this.tabArcGIS.Controls.Add(this.label6);
-            this.tabArcGIS.Location = new System.Drawing.Point(4, 26);
+            this.tabArcGIS.Location = new System.Drawing.Point(4, 29);
             this.tabArcGIS.Name = "tabArcGIS";
-            this.tabArcGIS.Size = new System.Drawing.Size(1123, 567);
+            this.tabArcGIS.Size = new System.Drawing.Size(1123, 564);
             this.tabArcGIS.TabIndex = 3;
             this.tabArcGIS.Text = "ArcGIS";
             this.tabArcGIS.UseVisualStyleBackColor = true;
@@ -702,16 +696,16 @@ namespace GisAddIn
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(25, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(202, 17);
+            this.label6.Size = new System.Drawing.Size(244, 20);
             this.label6.TabIndex = 12;
             this.label6.Text = "(ArcGIS Maps test will go here)";
             // 
             // tabUseAddressFile
             // 
             this.tabUseAddressFile.Controls.Add(this.panel2);
-            this.tabUseAddressFile.Location = new System.Drawing.Point(4, 26);
+            this.tabUseAddressFile.Location = new System.Drawing.Point(4, 29);
             this.tabUseAddressFile.Name = "tabUseAddressFile";
-            this.tabUseAddressFile.Size = new System.Drawing.Size(1123, 567);
+            this.tabUseAddressFile.Size = new System.Drawing.Size(1123, 564);
             this.tabUseAddressFile.TabIndex = 5;
             this.tabUseAddressFile.Text = "Use Address File";
             this.tabUseAddressFile.UseVisualStyleBackColor = true;
@@ -724,7 +718,7 @@ namespace GisAddIn
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1123, 567);
+            this.panel2.Size = new System.Drawing.Size(1123, 564);
             this.panel2.TabIndex = 16;
             this.toolTip1.SetToolTip(this.panel2, "Query Map Provide and Store Routine Information");
             // 
@@ -750,7 +744,7 @@ namespace GisAddIn
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textAddressPairsFilepath.Location = new System.Drawing.Point(9, 37);
             this.textAddressPairsFilepath.Name = "textAddressPairsFilepath";
-            this.textAddressPairsFilepath.Size = new System.Drawing.Size(1030, 23);
+            this.textAddressPairsFilepath.Size = new System.Drawing.Size(1030, 27);
             this.textAddressPairsFilepath.TabIndex = 13;
             this.toolTip1.SetToolTip(this.textAddressPairsFilepath, "Location of file of address pairs");
             // 
@@ -771,7 +765,7 @@ namespace GisAddIn
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(5, 19);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(124, 17);
+            this.label11.Size = new System.Drawing.Size(152, 20);
             this.label11.TabIndex = 14;
             this.label11.Text = "GIS Pairs CSV File";
             // 
@@ -780,7 +774,7 @@ namespace GisAddIn
             this.labelFileContents.AutoSize = true;
             this.labelFileContents.Location = new System.Drawing.Point(6, 76);
             this.labelFileContents.Name = "labelFileContents";
-            this.labelFileContents.Size = new System.Drawing.Size(194, 17);
+            this.labelFileContents.Size = new System.Drawing.Size(236, 20);
             this.labelFileContents.TabIndex = 18;
             this.labelFileContents.Text = "GIS Pairs File (CSV) Contents";
             // 
@@ -802,7 +796,7 @@ namespace GisAddIn
             this.groupApplyRoutes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupApplyRoutes.Controls.Add(this.buttonApplyRouteFile);
-            this.groupApplyRoutes.Location = new System.Drawing.Point(12, 462);
+            this.groupApplyRoutes.Location = new System.Drawing.Point(12, 459);
             this.groupApplyRoutes.Name = "groupApplyRoutes";
             this.groupApplyRoutes.Size = new System.Drawing.Size(1091, 75);
             this.groupApplyRoutes.TabIndex = 34;
@@ -844,7 +838,7 @@ namespace GisAddIn
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(5, 119);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(190, 17);
+            this.label24.Size = new System.Drawing.Size(228, 20);
             this.label24.TabIndex = 33;
             this.label24.Text = "Routes File (JSON) Contents";
             // 
@@ -878,7 +872,7 @@ namespace GisAddIn
             this.labelRoutesJsonFile.AutoSize = true;
             this.labelRoutesJsonFile.Location = new System.Drawing.Point(7, 86);
             this.labelRoutesJsonFile.Name = "labelRoutesJsonFile";
-            this.labelRoutesJsonFile.Size = new System.Drawing.Size(140, 17);
+            this.labelRoutesJsonFile.Size = new System.Drawing.Size(166, 20);
             this.labelRoutesJsonFile.TabIndex = 23;
             this.labelRoutesJsonFile.Text = "Routes JSON File: ...";
             // 
@@ -887,7 +881,7 @@ namespace GisAddIn
             this.comboGisSource.FormattingEnabled = true;
             this.comboGisSource.Location = new System.Drawing.Point(124, 34);
             this.comboGisSource.Name = "comboGisSource";
-            this.comboGisSource.Size = new System.Drawing.Size(279, 25);
+            this.comboGisSource.Size = new System.Drawing.Size(279, 28);
             this.comboGisSource.TabIndex = 20;
             this.toolTip1.SetToolTip(this.comboGisSource, "Available Map Providers");
             // 
@@ -896,7 +890,7 @@ namespace GisAddIn
             this.labelGisSource.AutoSize = true;
             this.labelGisSource.Location = new System.Drawing.Point(7, 37);
             this.labelGisSource.Name = "labelGisSource";
-            this.labelGisSource.Size = new System.Drawing.Size(92, 17);
+            this.labelGisSource.Size = new System.Drawing.Size(108, 20);
             this.labelGisSource.TabIndex = 19;
             this.labelGisSource.Text = "Map Provider";
             this.toolTip1.SetToolTip(this.labelGisSource, "Which GIS Map Provider to use");
@@ -919,10 +913,10 @@ namespace GisAddIn
             this.tabGisResults.Controls.Add(this.textMapDataSegments);
             this.tabGisResults.Controls.Add(this.buttonDisplayMapData);
             this.tabGisResults.Controls.Add(this.label2);
-            this.tabGisResults.Location = new System.Drawing.Point(4, 26);
+            this.tabGisResults.Location = new System.Drawing.Point(4, 29);
             this.tabGisResults.Name = "tabGisResults";
             this.tabGisResults.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGisResults.Size = new System.Drawing.Size(1123, 567);
+            this.tabGisResults.Size = new System.Drawing.Size(1123, 564);
             this.tabGisResults.TabIndex = 1;
             this.tabGisResults.Text = "GIS Results";
             this.tabGisResults.UseVisualStyleBackColor = true;
@@ -932,7 +926,7 @@ namespace GisAddIn
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(7, 130);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(91, 17);
+            this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 12;
             this.label4.Text = "MapData List";
             // 
@@ -964,16 +958,16 @@ namespace GisAddIn
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 21);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(189, 17);
+            this.label2.Size = new System.Drawing.Size(228, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Results Normalized for Simio";
             // 
             // tabSimioDisplayInfo
             // 
             this.tabSimioDisplayInfo.Controls.Add(this.panel4);
-            this.tabSimioDisplayInfo.Location = new System.Drawing.Point(4, 26);
+            this.tabSimioDisplayInfo.Location = new System.Drawing.Point(4, 29);
             this.tabSimioDisplayInfo.Name = "tabSimioDisplayInfo";
-            this.tabSimioDisplayInfo.Size = new System.Drawing.Size(1123, 567);
+            this.tabSimioDisplayInfo.Size = new System.Drawing.Size(1123, 564);
             this.tabSimioDisplayInfo.TabIndex = 4;
             this.tabSimioDisplayInfo.Text = "Simio Display Info";
             this.tabSimioDisplayInfo.UseVisualStyleBackColor = true;
@@ -987,7 +981,7 @@ namespace GisAddIn
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1123, 567);
+            this.panel4.Size = new System.Drawing.Size(1123, 564);
             this.panel4.TabIndex = 5;
             // 
             // panelDisplayBoundingBox
@@ -1012,7 +1006,7 @@ namespace GisAddIn
             this.labelBoundingBoxCenter.AutoSize = true;
             this.labelBoundingBoxCenter.Location = new System.Drawing.Point(13, 156);
             this.labelBoundingBoxCenter.Name = "labelBoundingBoxCenter";
-            this.labelBoundingBoxCenter.Size = new System.Drawing.Size(200, 17);
+            this.labelBoundingBoxCenter.Size = new System.Drawing.Size(234, 20);
             this.labelBoundingBoxCenter.TabIndex = 9;
             this.labelBoundingBoxCenter.Text = "Bounding box is centered at ...";
             // 
@@ -1021,7 +1015,7 @@ namespace GisAddIn
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(11, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(332, 17);
+            this.label7.Size = new System.Drawing.Size(394, 20);
             this.label7.TabIndex = 8;
             this.label7.Text = "Bounding Box in lon,lat Coordinates (Lon=X, Lat=Y)";
             // 
@@ -1030,7 +1024,7 @@ namespace GisAddIn
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(13, 117);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(76, 17);
+            this.label9.Size = new System.Drawing.Size(92, 20);
             this.label9.TabIndex = 7;
             this.label9.Text = "Box Height";
             // 
@@ -1039,7 +1033,7 @@ namespace GisAddIn
             this.labelSimioWidth.AutoSize = true;
             this.labelSimioWidth.Location = new System.Drawing.Point(13, 88);
             this.labelSimioWidth.Name = "labelSimioWidth";
-            this.labelSimioWidth.Size = new System.Drawing.Size(75, 17);
+            this.labelSimioWidth.Size = new System.Drawing.Size(91, 20);
             this.labelSimioWidth.TabIndex = 6;
             this.labelSimioWidth.Text = "Box Width:";
             // 
@@ -1047,7 +1041,7 @@ namespace GisAddIn
             // 
             this.textSimioBoxHeight.Location = new System.Drawing.Point(138, 114);
             this.textSimioBoxHeight.Name = "textSimioBoxHeight";
-            this.textSimioBoxHeight.Size = new System.Drawing.Size(120, 23);
+            this.textSimioBoxHeight.Size = new System.Drawing.Size(120, 27);
             this.textSimioBoxHeight.TabIndex = 5;
             this.textSimioBoxHeight.Text = "30";
             this.textSimioBoxHeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1056,7 +1050,7 @@ namespace GisAddIn
             // 
             this.textSimioBoxWidth.Location = new System.Drawing.Point(138, 81);
             this.textSimioBoxWidth.Name = "textSimioBoxWidth";
-            this.textSimioBoxWidth.Size = new System.Drawing.Size(120, 23);
+            this.textSimioBoxWidth.Size = new System.Drawing.Size(120, 27);
             this.textSimioBoxWidth.TabIndex = 4;
             this.textSimioBoxWidth.Text = "70";
             this.textSimioBoxWidth.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1065,7 +1059,7 @@ namespace GisAddIn
             // 
             this.textSimioBoxY.Location = new System.Drawing.Point(316, 46);
             this.textSimioBoxY.Name = "textSimioBoxY";
-            this.textSimioBoxY.Size = new System.Drawing.Size(120, 23);
+            this.textSimioBoxY.Size = new System.Drawing.Size(120, 27);
             this.textSimioBoxY.TabIndex = 3;
             this.textSimioBoxY.Text = "20";
             this.textSimioBoxY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1075,7 +1069,7 @@ namespace GisAddIn
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(286, 49);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(21, 17);
+            this.label8.Size = new System.Drawing.Size(24, 20);
             this.label8.TabIndex = 2;
             this.label8.Text = "Y:";
             // 
@@ -1084,7 +1078,7 @@ namespace GisAddIn
             this.labelBoxX.AutoSize = true;
             this.labelBoxX.Location = new System.Drawing.Point(13, 47);
             this.labelBoxX.Name = "labelBoxX";
-            this.labelBoxX.Size = new System.Drawing.Size(88, 17);
+            this.labelBoxX.Size = new System.Drawing.Size(104, 20);
             this.labelBoxX.TabIndex = 1;
             this.labelBoxX.Text = "UpperLeft X:";
             // 
@@ -1092,7 +1086,7 @@ namespace GisAddIn
             // 
             this.textSimioBoxX.Location = new System.Drawing.Point(138, 46);
             this.textSimioBoxX.Name = "textSimioBoxX";
-            this.textSimioBoxX.Size = new System.Drawing.Size(120, 23);
+            this.textSimioBoxX.Size = new System.Drawing.Size(120, 27);
             this.textSimioBoxX.TabIndex = 0;
             this.textSimioBoxX.Text = "-130";
             this.textSimioBoxX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1125,7 +1119,7 @@ namespace GisAddIn
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(11, 14);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(183, 17);
+            this.label23.Size = new System.Drawing.Size(219, 20);
             this.label23.TabIndex = 8;
             this.label23.Text = "Origin (Facility Coordinates)";
             // 
@@ -1134,7 +1128,7 @@ namespace GisAddIn
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(13, 72);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(64, 17);
+            this.label25.Size = new System.Drawing.Size(77, 20);
             this.label25.TabIndex = 7;
             this.label25.Text = "Facility Y";
             // 
@@ -1143,7 +1137,7 @@ namespace GisAddIn
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(13, 40);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(64, 17);
+            this.label26.Size = new System.Drawing.Size(78, 20);
             this.label26.TabIndex = 6;
             this.label26.Text = "Facility X";
             // 
@@ -1151,7 +1145,7 @@ namespace GisAddIn
             // 
             this.textFacilityY.Location = new System.Drawing.Point(208, 66);
             this.textFacilityY.Name = "textFacilityY";
-            this.textFacilityY.Size = new System.Drawing.Size(120, 23);
+            this.textFacilityY.Size = new System.Drawing.Size(120, 27);
             this.textFacilityY.TabIndex = 5;
             this.textFacilityY.Text = "0.0";
             this.textFacilityY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1160,7 +1154,7 @@ namespace GisAddIn
             // 
             this.textFacilityX.Location = new System.Drawing.Point(208, 37);
             this.textFacilityX.Name = "textFacilityX";
-            this.textFacilityX.Size = new System.Drawing.Size(120, 23);
+            this.textFacilityX.Size = new System.Drawing.Size(120, 27);
             this.textFacilityX.TabIndex = 4;
             this.textFacilityX.Text = "0.0";
             this.textFacilityX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1182,7 +1176,7 @@ namespace GisAddIn
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(11, 14);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(272, 17);
+            this.label12.Size = new System.Drawing.Size(327, 20);
             this.label12.TabIndex = 8;
             this.label12.Text = "How Many Simio (Meters) per (Lon or Lat)";
             // 
@@ -1191,7 +1185,7 @@ namespace GisAddIn
             this.label13.AutoSize = true;
             this.label13.Location = new System.Drawing.Point(13, 99);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(138, 17);
+            this.label13.Size = new System.Drawing.Size(166, 20);
             this.label13.TabIndex = 7;
             this.label13.Text = "Simio Meters per Lat";
             // 
@@ -1200,7 +1194,7 @@ namespace GisAddIn
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(13, 63);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(142, 17);
+            this.label14.Size = new System.Drawing.Size(170, 20);
             this.label14.TabIndex = 6;
             this.label14.Text = "Simio Meters per Lon";
             // 
@@ -1208,7 +1202,7 @@ namespace GisAddIn
             // 
             this.textSimioMetersPerLat.Location = new System.Drawing.Point(208, 93);
             this.textSimioMetersPerLat.Name = "textSimioMetersPerLat";
-            this.textSimioMetersPerLat.Size = new System.Drawing.Size(120, 23);
+            this.textSimioMetersPerLat.Size = new System.Drawing.Size(120, 27);
             this.textSimioMetersPerLat.TabIndex = 5;
             this.textSimioMetersPerLat.Text = "1.0";
             this.textSimioMetersPerLat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1217,7 +1211,7 @@ namespace GisAddIn
             // 
             this.textSimioMetersPerLon.Location = new System.Drawing.Point(208, 60);
             this.textSimioMetersPerLon.Name = "textSimioMetersPerLon";
-            this.textSimioMetersPerLon.Size = new System.Drawing.Size(120, 23);
+            this.textSimioMetersPerLon.Size = new System.Drawing.Size(120, 27);
             this.textSimioMetersPerLon.TabIndex = 4;
             this.textSimioMetersPerLon.Text = "1.0";
             this.textSimioMetersPerLon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1225,9 +1219,9 @@ namespace GisAddIn
             // tabTools
             // 
             this.tabTools.Controls.Add(this.groupBox1);
-            this.tabTools.Location = new System.Drawing.Point(4, 26);
+            this.tabTools.Location = new System.Drawing.Point(4, 29);
             this.tabTools.Name = "tabTools";
-            this.tabTools.Size = new System.Drawing.Size(1123, 567);
+            this.tabTools.Size = new System.Drawing.Size(1123, 564);
             this.tabTools.TabIndex = 6;
             this.tabTools.Text = "Tools";
             this.tabTools.UseVisualStyleBackColor = true;
@@ -1266,7 +1260,7 @@ namespace GisAddIn
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.Location = new System.Drawing.Point(25, 46);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(433, 17);
+            this.label18.Size = new System.Drawing.Size(515, 20);
             this.label18.TabIndex = 29;
             this.label18.Text = "Creates a tab-delimited pair file from a json file of unique addresses";
             // 
@@ -1275,7 +1269,7 @@ namespace GisAddIn
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(25, 120);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(90, 17);
+            this.label16.Size = new System.Drawing.Size(108, 20);
             this.label16.TabIndex = 26;
             this.label16.Text = "File Contents";
             // 
@@ -1297,7 +1291,7 @@ namespace GisAddIn
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(163, 91);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(627, 23);
+            this.textBox1.Size = new System.Drawing.Size(627, 27);
             this.textBox1.TabIndex = 21;
             this.toolTip1.SetToolTip(this.textBox1, "Location of file of address pairs");
             // 
@@ -1318,7 +1312,7 @@ namespace GisAddIn
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(25, 91);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(120, 17);
+            this.label17.Size = new System.Drawing.Size(144, 20);
             this.label17.TabIndex = 22;
             this.label17.Text = "Address Json File";
             // 
@@ -1338,7 +1332,7 @@ namespace GisAddIn
             this.labelInstructions.ForeColor = System.Drawing.SystemColors.Highlight;
             this.labelInstructions.Location = new System.Drawing.Point(11, 18);
             this.labelInstructions.Name = "labelInstructions";
-            this.labelInstructions.Size = new System.Drawing.Size(617, 20);
+            this.labelInstructions.Size = new System.Drawing.Size(757, 25);
             this.labelInstructions.TabIndex = 9;
             this.labelInstructions.Text = "Query the route, and then Close the form to place the results on the Simio Facili" +
     "ty View";
@@ -1348,10 +1342,17 @@ namespace GisAddIn
             this.panelContent.Controls.Add(this.tabControl1);
             this.panelContent.Controls.Add(this.panelTop);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContent.Location = new System.Drawing.Point(0, 29);
+            this.panelContent.Location = new System.Drawing.Point(0, 36);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1131, 658);
+            this.panelContent.Size = new System.Drawing.Size(1131, 647);
             this.panelContent.TabIndex = 4;
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(93, 32);
+            this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // FormGisViewer
             // 
@@ -1959,6 +1960,12 @@ namespace GisAddIn
 
 
 
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dialogAbout dialog = new dialogAbout();
+            DialogResult result = dialog.ShowDialog();
         }
     }
 }

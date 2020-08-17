@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("GisAddIn")]
-[assembly: AssemblyDescription("Demonstates a GIS Interface")]
+[assembly: AssemblyDescription("Demonstrates a Simio GIS Addin that gets data from a Map Provider (e.g. Bing, Google, ...) and uses that data to build Simio Objects")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Simio, LLC")]
 [assembly: AssemblyProduct("GisAddIn")]
