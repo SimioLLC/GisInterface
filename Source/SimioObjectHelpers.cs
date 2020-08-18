@@ -75,14 +75,14 @@ namespace GisAddIn
                 float xScale = transform.SimioScaling.X; // 20f / mapData.LonLatBoundingBox.Width;
                 float yScale = transform.SimioScaling.Y; // 20f / mapData.BoundingBox.Height;
 
-                // Find the center in latlon coordinates
-                float xCenter = (float)transform.Origin.X; 
-                float yCenter = (float)transform.Origin.Y; 
+                // Find the center in latlon coordinates, because we are going to transform before we scale
+                float xCenter = -(float)transform.BoxCenter.X; 
+                float yCenter = -(float)transform.BoxCenter.Y; 
 
                 // Build a transformation matrix
                 Matrix mat = new Matrix();  // Create identity matrix
                 //mat.Rotate(-90);
-                mat.Translate(-xCenter, -yCenter);  // move to origin
+                mat.Translate(xCenter, yCenter);  // move to origin
                 mat.Scale(xScale, yScale, MatrixOrder.Append); // scale to size
 
                 MapSegment seg = mapRoute.SegmentList[0];

@@ -61,9 +61,9 @@ namespace GisAddIn
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGisViewer));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.labelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -162,7 +162,7 @@ namespace GisAddIn
             this.labelInstructions = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cbPutInBoxCenter = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -192,8 +192,8 @@ namespace GisAddIn
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                this.closeToolStripMenuItem,
-                this.aboutToolStripMenuItem});
+            this.closeToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1131, 36);
@@ -207,11 +207,18 @@ namespace GisAddIn
             this.closeToolStripMenuItem.Text = "&Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click_2);
             // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(93, 32);
+            this.aboutToolStripMenuItem.Text = "&About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                this.labelStatus});
+            this.labelStatus});
             this.statusStrip1.Location = new System.Drawing.Point(0, 683);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1131, 26);
@@ -329,7 +336,7 @@ namespace GisAddIn
             // 
             // textBingMapsRequestUrl
             // 
-            this.textBingMapsRequestUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBingMapsRequestUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBingMapsRequestUrl.Location = new System.Drawing.Point(20, 219);
             this.textBingMapsRequestUrl.Multiline = true;
@@ -367,7 +374,7 @@ namespace GisAddIn
             // 
             // textBingMapsResponse
             // 
-            this.textBingMapsResponse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBingMapsResponse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBingMapsResponse.Location = new System.Drawing.Point(19, 357);
             this.textBingMapsResponse.Multiline = true;
@@ -430,7 +437,7 @@ namespace GisAddIn
             this.tabGoogleMaps.Controls.Add(this.textGoogleMapsTo);
             this.tabGoogleMaps.Location = new System.Drawing.Point(4, 29);
             this.tabGoogleMaps.Name = "tabGoogleMaps";
-            this.tabGoogleMaps.Size = new System.Drawing.Size(1123, 564);
+            this.tabGoogleMaps.Size = new System.Drawing.Size(1123, 553);
             this.tabGoogleMaps.TabIndex = 2;
             this.tabGoogleMaps.Text = "Google Maps";
             this.tabGoogleMaps.UseVisualStyleBackColor = true;
@@ -490,7 +497,7 @@ namespace GisAddIn
             // 
             // textGoogleMapsRequestUrl
             // 
-            this.textGoogleMapsRequestUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textGoogleMapsRequestUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textGoogleMapsRequestUrl.Location = new System.Drawing.Point(22, 269);
             this.textGoogleMapsRequestUrl.Multiline = true;
@@ -528,7 +535,7 @@ namespace GisAddIn
             // 
             // textGoogleMapsResponse
             // 
-            this.textGoogleMapsResponse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textGoogleMapsResponse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textGoogleMapsResponse.Location = new System.Drawing.Point(21, 407);
             this.textGoogleMapsResponse.Multiline = true;
@@ -551,7 +558,7 @@ namespace GisAddIn
             // 
             // textGoogleMapsKey
             // 
-            this.textGoogleMapsKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textGoogleMapsKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textGoogleMapsKey.Location = new System.Drawing.Point(145, 62);
             this.textGoogleMapsKey.Name = "textGoogleMapsKey";
@@ -580,7 +587,7 @@ namespace GisAddIn
             this.tabArcGIS.Controls.Add(this.label6);
             this.tabArcGIS.Location = new System.Drawing.Point(4, 29);
             this.tabArcGIS.Name = "tabArcGIS";
-            this.tabArcGIS.Size = new System.Drawing.Size(1123, 564);
+            this.tabArcGIS.Size = new System.Drawing.Size(1123, 553);
             this.tabArcGIS.TabIndex = 3;
             this.tabArcGIS.Text = "ArcGIS";
             this.tabArcGIS.UseVisualStyleBackColor = true;
@@ -599,7 +606,7 @@ namespace GisAddIn
             this.tabUseAddressFile.Controls.Add(this.panel2);
             this.tabUseAddressFile.Location = new System.Drawing.Point(4, 29);
             this.tabUseAddressFile.Name = "tabUseAddressFile";
-            this.tabUseAddressFile.Size = new System.Drawing.Size(1123, 564);
+            this.tabUseAddressFile.Size = new System.Drawing.Size(1123, 553);
             this.tabUseAddressFile.TabIndex = 5;
             this.tabUseAddressFile.Text = "Use Address File";
             this.tabUseAddressFile.UseVisualStyleBackColor = true;
@@ -612,13 +619,13 @@ namespace GisAddIn
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1123, 564);
+            this.panel2.Size = new System.Drawing.Size(1123, 553);
             this.panel2.TabIndex = 16;
             this.toolTip1.SetToolTip(this.panel2, "Query Map Provide and Store Routine Information");
             // 
             // groupAddressPairs
             // 
-            this.groupAddressPairs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupAddressPairs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupAddressPairs.Controls.Add(this.textAddressPairsFilepath);
             this.groupAddressPairs.Controls.Add(this.buttonGetFile);
@@ -634,9 +641,9 @@ namespace GisAddIn
             // 
             // textAddressPairsFilepath
             // 
-            this.textAddressPairsFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textAddressPairsFilepath.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textAddressPairsFilepath.Location = new System.Drawing.Point(9, 37);
+            this.textAddressPairsFilepath.Location = new System.Drawing.Point(11, 42);
             this.textAddressPairsFilepath.Name = "textAddressPairsFilepath";
             this.textAddressPairsFilepath.Size = new System.Drawing.Size(1030, 27);
             this.textAddressPairsFilepath.TabIndex = 13;
@@ -674,23 +681,23 @@ namespace GisAddIn
             // 
             // textPairsFileContents
             // 
-            this.textPairsFileContents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.textPairsFileContents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textPairsFileContents.Location = new System.Drawing.Point(9, 96);
+            this.textPairsFileContents.Location = new System.Drawing.Point(9, 99);
             this.textPairsFileContents.Multiline = true;
             this.textPairsFileContents.Name = "textPairsFileContents";
             this.textPairsFileContents.ReadOnly = true;
             this.textPairsFileContents.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textPairsFileContents.Size = new System.Drawing.Size(1077, 63);
+            this.textPairsFileContents.Size = new System.Drawing.Size(1077, 60);
             this.textPairsFileContents.TabIndex = 31;
             // 
             // groupApplyRoutes
             // 
-            this.groupApplyRoutes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+            this.groupApplyRoutes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupApplyRoutes.Controls.Add(this.buttonApplyRouteFile);
-            this.groupApplyRoutes.Location = new System.Drawing.Point(12, 459);
+            this.groupApplyRoutes.Location = new System.Drawing.Point(12, 448);
             this.groupApplyRoutes.Name = "groupApplyRoutes";
             this.groupApplyRoutes.Size = new System.Drawing.Size(1091, 75);
             this.groupApplyRoutes.TabIndex = 34;
@@ -711,7 +718,7 @@ namespace GisAddIn
             // 
             // groupFetchAndStoreRoutes
             // 
-            this.groupFetchAndStoreRoutes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.groupFetchAndStoreRoutes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupFetchAndStoreRoutes.Controls.Add(this.label24);
             this.groupFetchAndStoreRoutes.Controls.Add(this.textRoutesFileContents);
@@ -738,23 +745,23 @@ namespace GisAddIn
             // 
             // textRoutesFileContents
             // 
-            this.textRoutesFileContents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.textRoutesFileContents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textRoutesFileContents.Location = new System.Drawing.Point(8, 139);
+            this.textRoutesFileContents.Location = new System.Drawing.Point(8, 142);
             this.textRoutesFileContents.Multiline = true;
             this.textRoutesFileContents.Name = "textRoutesFileContents";
             this.textRoutesFileContents.ReadOnly = true;
             this.textRoutesFileContents.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textRoutesFileContents.Size = new System.Drawing.Size(1077, 120);
+            this.textRoutesFileContents.Size = new System.Drawing.Size(1077, 117);
             this.textRoutesFileContents.TabIndex = 32;
             // 
             // buttonReadRoutesFromFile
             // 
             this.buttonReadRoutesFromFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReadRoutesFromFile.Location = new System.Drawing.Point(888, 34);
+            this.buttonReadRoutesFromFile.Location = new System.Drawing.Point(849, 37);
             this.buttonReadRoutesFromFile.Name = "buttonReadRoutesFromFile";
-            this.buttonReadRoutesFromFile.Size = new System.Drawing.Size(197, 39);
+            this.buttonReadRoutesFromFile.Size = new System.Drawing.Size(236, 39);
             this.buttonReadRoutesFromFile.TabIndex = 24;
             this.buttonReadRoutesFromFile.Text = "Get Routes From File...";
             this.toolTip1.SetToolTip(this.buttonReadRoutesFromFile, "Select a JSON file holding Routes information");
@@ -794,7 +801,7 @@ namespace GisAddIn
             this.buttonQueryProviderAndStoreRouteFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonQueryProviderAndStoreRouteFile.Location = new System.Drawing.Point(424, 34);
             this.buttonQueryProviderAndStoreRouteFile.Name = "buttonQueryProviderAndStoreRouteFile";
-            this.buttonQueryProviderAndStoreRouteFile.Size = new System.Drawing.Size(197, 39);
+            this.buttonQueryProviderAndStoreRouteFile.Size = new System.Drawing.Size(236, 39);
             this.buttonQueryProviderAndStoreRouteFile.TabIndex = 15;
             this.buttonQueryProviderAndStoreRouteFile.Text = "Query and Save Routes...";
             this.toolTip1.SetToolTip(this.buttonQueryProviderAndStoreRouteFile, "Query MapProvider for Routes and save them to a provider-agnostic JSON File.");
@@ -810,7 +817,7 @@ namespace GisAddIn
             this.tabGisResults.Location = new System.Drawing.Point(4, 29);
             this.tabGisResults.Name = "tabGisResults";
             this.tabGisResults.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGisResults.Size = new System.Drawing.Size(1123, 564);
+            this.tabGisResults.Size = new System.Drawing.Size(1123, 553);
             this.tabGisResults.TabIndex = 1;
             this.tabGisResults.Text = "GIS Results";
             this.tabGisResults.UseVisualStyleBackColor = true;
@@ -826,7 +833,7 @@ namespace GisAddIn
             // 
             // textMapDataSegments
             // 
-            this.textMapDataSegments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textMapDataSegments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textMapDataSegments.Location = new System.Drawing.Point(21, 150);
             this.textMapDataSegments.Multiline = true;
@@ -861,7 +868,7 @@ namespace GisAddIn
             this.tabSimioDisplayInfo.Controls.Add(this.panel4);
             this.tabSimioDisplayInfo.Location = new System.Drawing.Point(4, 29);
             this.tabSimioDisplayInfo.Name = "tabSimioDisplayInfo";
-            this.tabSimioDisplayInfo.Size = new System.Drawing.Size(1123, 564);
+            this.tabSimioDisplayInfo.Size = new System.Drawing.Size(1123, 553);
             this.tabSimioDisplayInfo.TabIndex = 4;
             this.tabSimioDisplayInfo.Text = "Simio Display Info";
             this.tabSimioDisplayInfo.UseVisualStyleBackColor = true;
@@ -875,7 +882,7 @@ namespace GisAddIn
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1123, 564);
+            this.panel4.Size = new System.Drawing.Size(1123, 553);
             this.panel4.TabIndex = 5;
             // 
             // panelDisplayBoundingBox
@@ -998,6 +1005,7 @@ namespace GisAddIn
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.cbPutInBoxCenter);
             this.panel3.Controls.Add(this.label23);
             this.panel3.Controls.Add(this.label25);
             this.panel3.Controls.Add(this.label26);
@@ -1098,7 +1106,7 @@ namespace GisAddIn
             this.textSimioMetersPerLat.Name = "textSimioMetersPerLat";
             this.textSimioMetersPerLat.Size = new System.Drawing.Size(120, 27);
             this.textSimioMetersPerLat.TabIndex = 5;
-            this.textSimioMetersPerLat.Text = "1.0";
+            this.textSimioMetersPerLat.Text = "50";
             this.textSimioMetersPerLat.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textSimioMetersPerLon
@@ -1107,7 +1115,7 @@ namespace GisAddIn
             this.textSimioMetersPerLon.Name = "textSimioMetersPerLon";
             this.textSimioMetersPerLon.Size = new System.Drawing.Size(120, 27);
             this.textSimioMetersPerLon.TabIndex = 4;
-            this.textSimioMetersPerLon.Text = "1.0";
+            this.textSimioMetersPerLon.Text = "50";
             this.textSimioMetersPerLon.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tabTools
@@ -1115,7 +1123,7 @@ namespace GisAddIn
             this.tabTools.Controls.Add(this.groupBox1);
             this.tabTools.Location = new System.Drawing.Point(4, 29);
             this.tabTools.Name = "tabTools";
-            this.tabTools.Size = new System.Drawing.Size(1123, 564);
+            this.tabTools.Size = new System.Drawing.Size(1123, 553);
             this.tabTools.TabIndex = 6;
             this.tabTools.Text = "Tools";
             this.tabTools.UseVisualStyleBackColor = true;
@@ -1138,7 +1146,7 @@ namespace GisAddIn
             // 
             // textJsonContents
             // 
-            this.textJsonContents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textJsonContents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textJsonContents.Location = new System.Drawing.Point(163, 117);
             this.textJsonContents.Multiline = true;
@@ -1181,7 +1189,7 @@ namespace GisAddIn
             // 
             // textBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(163, 91);
             this.textBox1.Name = "textBox1";
@@ -1241,22 +1249,28 @@ namespace GisAddIn
             this.panelContent.Size = new System.Drawing.Size(1131, 647);
             this.panelContent.TabIndex = 4;
             // 
-            // aboutToolStripMenuItem
+            // cbPutInBoxCenter
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(93, 32);
-            this.aboutToolStripMenuItem.Text = "&About...";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.cbPutInBoxCenter.AutoSize = true;
+            this.cbPutInBoxCenter.Checked = true;
+            this.cbPutInBoxCenter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbPutInBoxCenter.Location = new System.Drawing.Point(364, 15);
+            this.cbPutInBoxCenter.Name = "cbPutInBoxCenter";
+            this.cbPutInBoxCenter.Size = new System.Drawing.Size(163, 24);
+            this.cbPutInBoxCenter.TabIndex = 9;
+            this.cbPutInBoxCenter.Text = "Put in Box Center";
+            this.toolTip1.SetToolTip(this.cbPutInBoxCenter, "When the transform in computed, put the Simio Facility origin at the bounding box" +
+        " center");
+            this.cbPutInBoxCenter.UseVisualStyleBackColor = true;
             // 
-            // FormGisViewer
+            // FormGis
             // 
             this.ClientSize = new System.Drawing.Size(1131, 709);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "FormGisViewer";
+            this.Name = "FormGis";
             this.Load += new System.EventHandler(this.FormGis_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -1295,6 +1309,7 @@ namespace GisAddIn
             this.panelContent.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         private MenuStrip menuStrip1;
@@ -1399,7 +1414,7 @@ namespace GisAddIn
         private TextBox textFacilityX;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private TabPage tabGisResults;
-
+        private CheckBox cbPutInBoxCenter;
     }
 
     #endregion

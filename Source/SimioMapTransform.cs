@@ -74,13 +74,32 @@ namespace GisAddIn
             }
         }
 
-        public PointF BuildSimioOrigin(string facilityX, string facilityY)
+        /// <summary>
+        /// If PutOriginAtBoxCenter is true,
+        /// Then it is assumed that the BoundingBox and Scaling are already calculated.
+        /// </summary>
+        /// <param name="facilityX"></param>
+        /// <param name="facilityY"></param>
+        /// <returns></returns>
+        public PointF BuildSimioOrigin(string facilityX, string facilityY, bool putOriginAtBoxCenter)
         {
             try
             {
+               
                 float xx = float.Parse(facilityX);
                 float yy = float.Parse(facilityY);
-                this.Origin = new PointF(xx, yy);
+
+                if ( putOriginAtBoxCenter )
+                {
+                    PointF center = new PointF(this.BoxCenter.X * this.SimioScaling.X,
+                        this.BoxCenter.Y * this.SimioScaling.Y);
+                    this.Origin = center;
+                }
+                else
+                {
+                    this.Origin = new PointF(xx, yy);
+                }
+
                 return this.Origin;
             }
             catch (Exception ex)

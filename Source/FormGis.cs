@@ -571,10 +571,14 @@ namespace GisAddIn
 
                 MapTransform.BuildBoundingBox(textSimioBoxX.Text, textSimioBoxY.Text, textSimioBoxWidth.Text, textSimioBoxHeight.Text);
 
-                labelBoundingBoxCenter.Text = $"BoundingBox Lon/Lat center is {MapTransform.BoxCenter.X:F3}, {MapTransform.BoxCenter.Y:F3}";
-                MapTransform.BuildSimioOrigin(textFacilityX.Text, textFacilityY.Text);
                 MapTransform.BuildSimioScaling(textSimioMetersPerLon.Text, textSimioMetersPerLat.Text);
+                MapTransform.BuildSimioOrigin(textFacilityX.Text, textFacilityY.Text, cbPutInBoxCenter.Checked);
 
+                PointF center = new PointF(MapTransform.BoxCenter.X * MapTransform.SimioScaling.X,
+                    MapTransform.BoxCenter.Y * MapTransform.SimioScaling.Y);
+                labelBoundingBoxCenter.Text = $"BoundingBox Lon/Lat center is {MapTransform.BoxCenter.X:F3}, {MapTransform.BoxCenter.Y:F3}";
+                textFacilityX.Text = $"{MapTransform.Origin.X:0.000}";
+                textFacilityY.Text = $"{MapTransform.Origin.Y:0.000}";
             }
             catch (Exception ex)
             {
@@ -598,10 +602,18 @@ namespace GisAddIn
                 return;
             }
 
-            if (!SimioObjectHelpers.BuildSimioFacilityObjectsFromMapRoutes(DesignContext, MapRoutes, MapTransform, out string explanation))
+            Cursor.Current = Cursors.WaitCursor;
+            try
             {
-                alert($"Cannot Build Facility Objects from MapRoutes={MapRoutes}. Err={explanation}");
-                return;
+                if (!SimioObjectHelpers.BuildSimioFacilityObjectsFromMapRoutes(DesignContext, MapRoutes, MapTransform, out string explanation))
+                {
+                    alert($"Cannot Build Facility Objects from MapRoutes={MapRoutes}. Err={explanation}");
+                    return;
+                }
+            }
+            finally
+            {
+                Cursor.Current = Cursors.WaitCursor;
             }
 
 
