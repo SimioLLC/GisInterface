@@ -138,6 +138,7 @@ namespace GisAddIn
             this.textSimioBoxX = new System.Windows.Forms.TextBox();
             this.buttonComputeTransform = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.cbPutInBoxCenter = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -162,7 +163,7 @@ namespace GisAddIn
             this.labelInstructions = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cbPutInBoxCenter = new System.Windows.Forms.CheckBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -185,6 +186,7 @@ namespace GisAddIn
             this.groupBox1.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.panelContent.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -810,10 +812,7 @@ namespace GisAddIn
             // 
             // tabGisResults
             // 
-            this.tabGisResults.Controls.Add(this.label4);
-            this.tabGisResults.Controls.Add(this.textMapDataSegments);
-            this.tabGisResults.Controls.Add(this.buttonDisplayMapData);
-            this.tabGisResults.Controls.Add(this.label2);
+            this.tabGisResults.Controls.Add(this.panel5);
             this.tabGisResults.Location = new System.Drawing.Point(4, 29);
             this.tabGisResults.Name = "tabGisResults";
             this.tabGisResults.Padding = new System.Windows.Forms.Padding(3);
@@ -825,7 +824,7 @@ namespace GisAddIn
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 130);
+            this.label4.Location = new System.Drawing.Point(12, 121);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(110, 20);
             this.label4.TabIndex = 12;
@@ -835,18 +834,18 @@ namespace GisAddIn
             // 
             this.textMapDataSegments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textMapDataSegments.Location = new System.Drawing.Point(21, 150);
+            this.textMapDataSegments.Location = new System.Drawing.Point(16, 144);
             this.textMapDataSegments.Multiline = true;
             this.textMapDataSegments.Name = "textMapDataSegments";
             this.textMapDataSegments.ReadOnly = true;
             this.textMapDataSegments.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textMapDataSegments.Size = new System.Drawing.Size(1093, 285);
+            this.textMapDataSegments.Size = new System.Drawing.Size(1082, 285);
             this.textMapDataSegments.TabIndex = 11;
             // 
             // buttonDisplayMapData
             // 
             this.buttonDisplayMapData.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDisplayMapData.Location = new System.Drawing.Point(958, 57);
+            this.buttonDisplayMapData.Location = new System.Drawing.Point(942, 13);
             this.buttonDisplayMapData.Name = "buttonDisplayMapData";
             this.buttonDisplayMapData.Size = new System.Drawing.Size(156, 42);
             this.buttonDisplayMapData.TabIndex = 4;
@@ -857,7 +856,7 @@ namespace GisAddIn
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 21);
+            this.label2.Location = new System.Drawing.Point(12, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(228, 20);
             this.label2.TabIndex = 1;
@@ -1015,6 +1014,20 @@ namespace GisAddIn
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(553, 103);
             this.panel3.TabIndex = 4;
+            // 
+            // cbPutInBoxCenter
+            // 
+            this.cbPutInBoxCenter.AutoSize = true;
+            this.cbPutInBoxCenter.Checked = true;
+            this.cbPutInBoxCenter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbPutInBoxCenter.Location = new System.Drawing.Point(364, 15);
+            this.cbPutInBoxCenter.Name = "cbPutInBoxCenter";
+            this.cbPutInBoxCenter.Size = new System.Drawing.Size(163, 24);
+            this.cbPutInBoxCenter.TabIndex = 9;
+            this.cbPutInBoxCenter.Text = "Put in Box Center";
+            this.toolTip1.SetToolTip(this.cbPutInBoxCenter, "When the transform in computed, put the Simio Facility origin at the bounding box" +
+        " center");
+            this.cbPutInBoxCenter.UseVisualStyleBackColor = true;
             // 
             // label23
             // 
@@ -1249,19 +1262,17 @@ namespace GisAddIn
             this.panelContent.Size = new System.Drawing.Size(1131, 647);
             this.panelContent.TabIndex = 4;
             // 
-            // cbPutInBoxCenter
+            // panel5
             // 
-            this.cbPutInBoxCenter.AutoSize = true;
-            this.cbPutInBoxCenter.Checked = true;
-            this.cbPutInBoxCenter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbPutInBoxCenter.Location = new System.Drawing.Point(364, 15);
-            this.cbPutInBoxCenter.Name = "cbPutInBoxCenter";
-            this.cbPutInBoxCenter.Size = new System.Drawing.Size(163, 24);
-            this.cbPutInBoxCenter.TabIndex = 9;
-            this.cbPutInBoxCenter.Text = "Put in Box Center";
-            this.toolTip1.SetToolTip(this.cbPutInBoxCenter, "When the transform in computed, put the Simio Facility origin at the bounding box" +
-        " center");
-            this.cbPutInBoxCenter.UseVisualStyleBackColor = true;
+            this.panel5.Controls.Add(this.label2);
+            this.panel5.Controls.Add(this.buttonDisplayMapData);
+            this.panel5.Controls.Add(this.textMapDataSegments);
+            this.panel5.Controls.Add(this.label4);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1117, 547);
+            this.panel5.TabIndex = 13;
             // 
             // FormGis
             // 
@@ -1292,7 +1303,6 @@ namespace GisAddIn
             this.groupFetchAndStoreRoutes.ResumeLayout(false);
             this.groupFetchAndStoreRoutes.PerformLayout();
             this.tabGisResults.ResumeLayout(false);
-            this.tabGisResults.PerformLayout();
             this.tabSimioDisplayInfo.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panelDisplayBoundingBox.ResumeLayout(false);
@@ -1307,6 +1317,8 @@ namespace GisAddIn
             this.panelTop.ResumeLayout(false);
             this.panelTop.PerformLayout();
             this.panelContent.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1415,6 +1427,7 @@ namespace GisAddIn
         private ToolStripMenuItem aboutToolStripMenuItem;
         private TabPage tabGisResults;
         private CheckBox cbPutInBoxCenter;
+        private Panel panel5;
     }
 
     #endregion
