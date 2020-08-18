@@ -85,8 +85,17 @@
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
     <Compile Include="BingMapHelpers.cs" />
-    <Compile Include="FormGisViewer.cs">
+    <Compile Include="FormGis.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormGis.Designer.cs">
+      <DependentUpon>FormGis.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormTest.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTest.Designer.cs">
+      <DependentUpon>FormTest.cs</DependentUpon>
     </Compile>
     <Compile Include="GoogleMapHelpers.cs" />
     <Compile Include="IMapHelper.cs" />
@@ -94,10 +103,6 @@
     <Compile Include="MapCoordinate.cs" />
     <Compile Include="MapSegment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
     <Compile Include="GisAddIn.cs" />
     <Compile Include="GisHelpers.cs" />
     <Compile Include="Properties\Resources1.Designer.cs">
@@ -125,8 +130,11 @@
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormGisViewer.resx">
-      <DependentUpon>FormGisViewer.cs</DependentUpon>
+    <EmbeddedResource Include="FormGis.resx">
+      <DependentUpon>FormGis.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTest.resx">
+      <DependentUpon>FormTest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <SubType>Designer</SubType>

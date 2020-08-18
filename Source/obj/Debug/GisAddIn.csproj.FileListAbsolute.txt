@@ -25,3 +25,6 @@ E:\(svn azure)\SimioCloud\Github\GisInterface\Source\obj\Debug\GisAddIn.csproj.C
 E:\(svn azure)\SimioCloud\Github\GisInterface\Source\obj\Debug\GisAddIn.dll
 E:\(svn azure)\SimioCloud\Github\GisInterface\Source\obj\Debug\GisAddIn.pdb
 E:\(svn azure)\SimioCloud\Github\GisInterface\Source\obj\Debug\GisAddIn.csprojAssemblyReference.cache
+E:\(svn azure)\SimioCloud\Github\GisInterface\Source\obj\Debug\GisAddIn.dialogAbout.resources
+E:\(svn azure)\SimioCloud\Github\GisInterface\Source\obj\Debug\GisAddIn.FormGis.resources
+E:\(svn azure)\SimioCloud\Github\GisInterface\Source\obj\Debug\GisAddIn.FormTest.resources

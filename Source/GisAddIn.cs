@@ -89,11 +89,13 @@ namespace GisAddIn
 
                 SimioMapRoute mapData = new SimioMapRoute("","");
 
-                // Query the user for map data
-                LaunchForm(context, mapData);
+                // Launch the form and give it access to the Simio Design Context
+                FormGis FormViewer = new FormGis();
 
-                //BuildSimioNodesAndPathFromMapData(context, mapData, transform);
-                //BuildSimioObjectsFromLocationData(context, mapData, locData);
+                FormViewer.DesignContext = context;
+                FormViewer.MapRoute = mapData;
+
+                FormViewer.Show();
 
             }
             catch (Exception ex)
@@ -109,13 +111,6 @@ namespace GisAddIn
         {
             try
             {
-                FormGisViewer FormViewer = new FormGisViewer();
-
-                FormViewer.DesignContext = context;
-                FormViewer.MapRoute = mapData;
-////                FormViewer.LocationData = locData;
-
-                FormViewer.Show();
 
             }
             catch (Exception ex)
@@ -125,107 +120,105 @@ namespace GisAddIn
         }
 
 
+        /////// <summary>
+        /////// This will create a route from the given SimioMapRoute object 
+        /////// by building two nodes (start and stop) and a path between them, 
+        /////// and also attaching the start to a Source and the stop to a Sink.
+        /////// </summary>
+        /////// <param name="context"></param>
+        /////// <param name="mapData"></param>
+        ////private void BuildSimioNodesAndPathFromMapData(IDesignContext context, SimioMapRoute mapData, SimioMapTransform transform)
+        ////{
+        ////    try
+        ////    {
+        ////        if (mapData == null || mapData.SegmentList.Count == 0 )
+        ////        {
+        ////            return;
+        ////        }
 
+        ////        var intelligentObjects = context.ActiveModel.Facility.IntelligentObjects;
 
-        /// <summary>
-        /// This will create a route from the given SimioMapRoute object 
-        /// by building two nodes (start and stop) and a path between them, 
-        /// and also attaching the start to a Source and the stop to a Sink.
-        /// </summary>
-        /// <param name="context"></param>
-        /// <param name="mapData"></param>
-        private void BuildSimioNodesAndPathFromMapData(IDesignContext context, SimioMapRoute mapData, SimioMapTransform transform)
-        {
-            try
-            {
-                if (mapData == null || mapData.SegmentList.Count == 0 )
-                {
-                    return;
-                }
+        ////        // Get scale to convert from latlon to simio meters
+        ////        float xScale = transform.SimioScaling.X; // 20f / mapData.LonLatBoundingBox.Width;
+        ////        float yScale = transform.SimioScaling.Y; // 20f / mapData.BoundingBox.Height;
 
-                var intelligentObjects = context.ActiveModel.Facility.IntelligentObjects;
+        ////        // Find the center in latlon coordinates
+        ////        float xCenter = (float) transform.Origin.X; // BoundingBox.Left + mapData.BoundingBox.Width /2f;
+        ////        float yCenter = (float) transform.Origin.Y; // BoundingBox.Bottom - mapData.BoundingBox.Height /2f;
 
-                // Get scale to convert from latlon to simio meters
-                float xScale = transform.SimioScaling.X; // 20f / mapData.LonLatBoundingBox.Width;
-                float yScale = transform.SimioScaling.Y; // 20f / mapData.BoundingBox.Height;
+        ////        // Build a transformation matrix
+        ////        Matrix mat = new Matrix();  // Create identity matrix
+        ////        //mat.Rotate(-90);
+        ////        mat.Translate(-xCenter, -yCenter);  // move to origin
+        ////        mat.Scale(xScale, yScale, MatrixOrder.Append); // scale to size
 
-                // Find the center in latlon coordinates
-                float xCenter = (float) transform.Origin.X; // BoundingBox.Left + mapData.BoundingBox.Width /2f;
-                float yCenter = (float) transform.Origin.Y; // BoundingBox.Bottom - mapData.BoundingBox.Height /2f;
+        ////        MapSegment seg = mapData.SegmentList[0];
+        ////        FacilityLocation startLoc = GisHelpers.LatLonToFacilityLocation( mat, seg.StartLocation.Lat, seg.StartLocation.Lon);
 
-                // Build a transformation matrix
-                Matrix mat = new Matrix();  // Create identity matrix
-                //mat.Rotate(-90);
-                mat.Translate(-xCenter, -yCenter);  // move to origin
-                mat.Scale(xScale, yScale, MatrixOrder.Append); // scale to size
+        ////        seg = mapData.SegmentList[mapData.SegmentList.Count - 1];
+        ////        FacilityLocation endLoc = GisHelpers.LatLonToFacilityLocation( mat, seg.EndLocation.Lat, seg.EndLocation.Lon);
 
-                MapSegment seg = mapData.SegmentList[0];
-                FacilityLocation startLoc = GisHelpers.LatLonToFacilityLocation( mat, seg.StartLocation.Lat, seg.StartLocation.Lon);
+        ////        var source = intelligentObjects.CreateObject("Source", startLoc) as IFixedObject;
+        ////        source.ObjectName = ConvertToName(mapData.StartName); // e.g. "Seattle";
+        ////        //var server = intelligentObjects.CreateObject("Server", new FacilityLocation(0, 0, 0)) as IFixedObject;
+        ////        var sink = intelligentObjects.CreateObject("Sink", endLoc) as IFixedObject;
+        ////        var obj = (IPropertyObject)sink;
 
-                seg = mapData.SegmentList[mapData.SegmentList.Count - 1];
-                FacilityLocation endLoc = GisHelpers.LatLonToFacilityLocation( mat, seg.EndLocation.Lat, seg.EndLocation.Lon);
+        ////        obj.ObjectName = ConvertToName(mapData.EndName); // e.g. "Key West";
 
-                var source = intelligentObjects.CreateObject("Source", startLoc) as IFixedObject;
-                source.ObjectName = ConvertToName(mapData.StartName); // e.g. "Seattle";
-                //var server = intelligentObjects.CreateObject("Server", new FacilityLocation(0, 0, 0)) as IFixedObject;
-                var sink = intelligentObjects.CreateObject("Sink", endLoc) as IFixedObject;
-                var obj = (IPropertyObject)sink;
+        ////        var node1 = intelligentObjects.CreateObject("BasicNode", startLoc );
+        ////        node1.ObjectName = ConvertToName(mapData.StartName) + "1";
 
-                obj.ObjectName = ConvertToName(mapData.EndName); // e.g. "Key West";
+        ////        var node2 = intelligentObjects.CreateObject("BasicNode", endLoc);
+        ////        node2.ObjectName = ConvertToName(mapData.EndName) + "1";
 
-                var node1 = intelligentObjects.CreateObject("BasicNode", startLoc );
-                node1.ObjectName = ConvertToName(mapData.StartName) + "1";
+        ////        // Nodes is an IEnumerable, so we will create a temporary List from it to quickly get to the first node in the set
+        ////        var sourceoutput = new List<INodeObject>(source.Nodes)[0];
+        ////        var sinkinput = new List<INodeObject>(sink.Nodes)[0];
 
-                var node2 = intelligentObjects.CreateObject("BasicNode", endLoc);
-                node2.ObjectName = ConvertToName(mapData.EndName) + "1";
+        ////        // This path goes directly from the output of source to the input of server
+        ////        var path1 = intelligentObjects.CreateLink("Path", sourceoutput, (INodeObject) node1, null);
+        ////        // This path goes from the output of server to the input of sink, with one vertex in between
+        ////        var path2 = intelligentObjects.CreateLink("Path", (INodeObject) node2, sinkinput, new List<FacilityLocation> { endLoc});
 
-                // Nodes is an IEnumerable, so we will create a temporary List from it to quickly get to the first node in the set
-                var sourceoutput = new List<INodeObject>(source.Nodes)[0];
-                var sinkinput = new List<INodeObject>(sink.Nodes)[0];
+        ////        // Build a path from node1 to node2
+        ////        List<FacilityLocation> pathList = new List<FacilityLocation>();
+        ////        pathList.Add(node1.Location);
 
-                // This path goes directly from the output of source to the input of server
-                var path1 = intelligentObjects.CreateLink("Path", sourceoutput, (INodeObject) node1, null);
-                // This path goes from the output of server to the input of sink, with one vertex in between
-                var path2 = intelligentObjects.CreateLink("Path", (INodeObject) node2, sinkinput, new List<FacilityLocation> { endLoc});
+        ////        foreach ( MapSegment segment in mapData.SegmentList)
+        ////        {
+        ////            pathList.Add( GisHelpers.LatLonToFacilityLocation(mat, segment.StartLocation.Lat, segment.StartLocation.Lon));
+        ////        }
 
-                // Build a path from node1 to node2
-                List<FacilityLocation> pathList = new List<FacilityLocation>();
-                pathList.Add(node1.Location);
+        ////        pathList.Add(node2.Location);
 
-                foreach ( MapSegment segment in mapData.SegmentList)
-                {
-                    pathList.Add( GisHelpers.LatLonToFacilityLocation(mat, segment.StartLocation.Lat, segment.StartLocation.Lon));
-                }
+        ////        var path3 = intelligentObjects.CreateLink("Path", (INodeObject)node1, (INodeObject)node2, pathList);
+        ////    }
+        ////    catch (Exception ex)
+        ////    {
+        ////        throw new ApplicationException($"Err={ex}");
+        ////    }
+        ////}
 
-                pathList.Add(node2.Location);
+        ////public string ConvertToName(string suggestedName)
+        ////{
+        ////    string name = suggestedName;
+        ////    do
+        ////    {
+        ////        name = name.Replace(" ", "");
+        ////        name = name.Replace(",", "_");
 
-                var path3 = intelligentObjects.CreateLink("Path", (INodeObject)node1, (INodeObject)node2, pathList);
-            }
-            catch (Exception ex)
-            {
-                throw new ApplicationException($"Err={ex}");
-            }
-        }
+        ////    } while (name.IndexOf(' ') != -1 && (name.IndexOf(',') != -1));
 
-        public string ConvertToName(string suggestedName)
-        {
-            string name = suggestedName;
-            do
-            {
-                name = name.Replace(" ", "");
-                name = name.Replace(",", "_");
+        ////    // If it is an integer, then assume a zip code an prefix "Zip"
+        ////    int nn;
+        ////    if ( int.TryParse(name, out nn))
+        ////    {
+        ////        name = $"Zip{name}";
+        ////    }
 
-            } while (name.IndexOf(' ') != -1 && (name.IndexOf(',') != -1));
-
-            // If it is an integer, then assume a zip code an prefix "Zip"
-            int nn;
-            if ( int.TryParse(name, out nn))
-            {
-                name = $"Zip{name}";
-            }
-
-            return name;
-        }
+        ////    return name;
+        ////}
 
         ////private void BuildSimioObjectsFromLocationData(IDesignContext context, SimioMapRoute mapData, SimioLocationData locData)
         ////{

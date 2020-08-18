@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Web.Script.Serialization;
 
-namespace PortalManager
+namespace GisAddIn
 {
     public static class JsonHelpers
     {
