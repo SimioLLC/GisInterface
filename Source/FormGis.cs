@@ -542,7 +542,7 @@ namespace GisAddIn
                     return;
 
                 string path = dialog.FileName;
-
+                labelRoutesJsonFile.Text = $"JSON Route File: {path}";
                 if (!JsonHelpers.DeserializeFromFile(path, out SimioMapRoutes mapRoutes, out string explanation))
                 {
                     alert($"Cannot get routes from file={path}");
