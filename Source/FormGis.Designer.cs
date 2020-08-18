@@ -164,6 +164,7 @@ namespace GisAddIn
             this.panelContent = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel5 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -187,6 +188,7 @@ namespace GisAddIn
             this.panelTop.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -256,7 +258,7 @@ namespace GisAddIn
             this.tabBingMaps.Location = new System.Drawing.Point(4, 29);
             this.tabBingMaps.Name = "tabBingMaps";
             this.tabBingMaps.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBingMaps.Size = new System.Drawing.Size(1123, 553);
+            this.tabBingMaps.Size = new System.Drawing.Size(1133, 490);
             this.tabBingMaps.TabIndex = 0;
             this.tabBingMaps.Text = "Bing Maps";
             this.tabBingMaps.UseVisualStyleBackColor = true;
@@ -280,13 +282,13 @@ namespace GisAddIn
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1117, 547);
+            this.panel1.Size = new System.Drawing.Size(1127, 484);
             this.panel1.TabIndex = 11;
             // 
             // buttonBingApplyRoute
             // 
             this.buttonBingApplyRoute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBingApplyRoute.Location = new System.Drawing.Point(949, 149);
+            this.buttonBingApplyRoute.Location = new System.Drawing.Point(959, 149);
             this.buttonBingApplyRoute.Name = "buttonBingApplyRoute";
             this.buttonBingApplyRoute.Size = new System.Drawing.Size(151, 42);
             this.buttonBingApplyRoute.TabIndex = 13;
@@ -298,7 +300,7 @@ namespace GisAddIn
             // buttonSaveBingKey
             // 
             this.buttonSaveBingKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSaveBingKey.Location = new System.Drawing.Point(949, 12);
+            this.buttonSaveBingKey.Location = new System.Drawing.Point(959, 12);
             this.buttonSaveBingKey.Name = "buttonSaveBingKey";
             this.buttonSaveBingKey.Size = new System.Drawing.Size(151, 34);
             this.buttonSaveBingKey.TabIndex = 12;
@@ -330,7 +332,7 @@ namespace GisAddIn
             // labelRequestUrl
             // 
             this.labelRequestUrl.AutoSize = true;
-            this.labelRequestUrl.Location = new System.Drawing.Point(19, 185);
+            this.labelRequestUrl.Location = new System.Drawing.Point(19, 199);
             this.labelRequestUrl.Name = "labelRequestUrl";
             this.labelRequestUrl.Size = new System.Drawing.Size(110, 20);
             this.labelRequestUrl.TabIndex = 10;
@@ -340,12 +342,12 @@ namespace GisAddIn
             // 
             this.textBingMapsRequestUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBingMapsRequestUrl.Location = new System.Drawing.Point(20, 219);
+            this.textBingMapsRequestUrl.Location = new System.Drawing.Point(23, 222);
             this.textBingMapsRequestUrl.Multiline = true;
             this.textBingMapsRequestUrl.Name = "textBingMapsRequestUrl";
             this.textBingMapsRequestUrl.ReadOnly = true;
             this.textBingMapsRequestUrl.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBingMapsRequestUrl.Size = new System.Drawing.Size(1080, 87);
+            this.textBingMapsRequestUrl.Size = new System.Drawing.Size(1090, 87);
             this.textBingMapsRequestUrl.TabIndex = 9;
             // 
             // labelFrom
@@ -360,7 +362,7 @@ namespace GisAddIn
             // labelResponse
             // 
             this.labelResponse.AutoSize = true;
-            this.labelResponse.Location = new System.Drawing.Point(19, 322);
+            this.labelResponse.Location = new System.Drawing.Point(19, 334);
             this.labelResponse.Name = "labelResponse";
             this.labelResponse.Size = new System.Drawing.Size(84, 20);
             this.labelResponse.TabIndex = 6;
@@ -383,13 +385,13 @@ namespace GisAddIn
             this.textBingMapsResponse.Name = "textBingMapsResponse";
             this.textBingMapsResponse.ReadOnly = true;
             this.textBingMapsResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBingMapsResponse.Size = new System.Drawing.Size(1081, 98);
+            this.textBingMapsResponse.Size = new System.Drawing.Size(1091, 98);
             this.textBingMapsResponse.TabIndex = 5;
             // 
             // buttonBingQueryRoute
             // 
             this.buttonBingQueryRoute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonBingQueryRoute.Location = new System.Drawing.Point(949, 101);
+            this.buttonBingQueryRoute.Location = new System.Drawing.Point(959, 101);
             this.buttonBingQueryRoute.Name = "buttonBingQueryRoute";
             this.buttonBingQueryRoute.Size = new System.Drawing.Size(151, 42);
             this.buttonBingQueryRoute.TabIndex = 3;
@@ -399,9 +401,11 @@ namespace GisAddIn
             // 
             // textBingMapsKey
             // 
+            this.textBingMapsKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBingMapsKey.Location = new System.Drawing.Point(143, 12);
             this.textBingMapsKey.Name = "textBingMapsKey";
-            this.textBingMapsKey.Size = new System.Drawing.Size(640, 27);
+            this.textBingMapsKey.Size = new System.Drawing.Size(506, 27);
             this.textBingMapsKey.TabIndex = 7;
             // 
             // label1
@@ -423,23 +427,10 @@ namespace GisAddIn
             // 
             // tabGoogleMaps
             // 
-            this.tabGoogleMaps.Controls.Add(this.buttonGoogleApplyRoute);
-            this.tabGoogleMaps.Controls.Add(this.buttonSaveGoogleKey);
-            this.tabGoogleMaps.Controls.Add(this.label5);
-            this.tabGoogleMaps.Controls.Add(this.label15);
-            this.tabGoogleMaps.Controls.Add(this.label19);
-            this.tabGoogleMaps.Controls.Add(this.textGoogleMapsRequestUrl);
-            this.tabGoogleMaps.Controls.Add(this.label20);
-            this.tabGoogleMaps.Controls.Add(this.label21);
-            this.tabGoogleMaps.Controls.Add(this.textGoogleMapsFrom);
-            this.tabGoogleMaps.Controls.Add(this.textGoogleMapsResponse);
-            this.tabGoogleMaps.Controls.Add(this.buttonGoogleQueryRoute);
-            this.tabGoogleMaps.Controls.Add(this.textGoogleMapsKey);
-            this.tabGoogleMaps.Controls.Add(this.label22);
-            this.tabGoogleMaps.Controls.Add(this.textGoogleMapsTo);
+            this.tabGoogleMaps.Controls.Add(this.panel6);
             this.tabGoogleMaps.Location = new System.Drawing.Point(4, 29);
             this.tabGoogleMaps.Name = "tabGoogleMaps";
-            this.tabGoogleMaps.Size = new System.Drawing.Size(1123, 553);
+            this.tabGoogleMaps.Size = new System.Drawing.Size(1133, 490);
             this.tabGoogleMaps.TabIndex = 2;
             this.tabGoogleMaps.Text = "Google Maps";
             this.tabGoogleMaps.UseVisualStyleBackColor = true;
@@ -447,7 +438,7 @@ namespace GisAddIn
             // buttonGoogleApplyRoute
             // 
             this.buttonGoogleApplyRoute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGoogleApplyRoute.Location = new System.Drawing.Point(951, 199);
+            this.buttonGoogleApplyRoute.Location = new System.Drawing.Point(963, 150);
             this.buttonGoogleApplyRoute.Name = "buttonGoogleApplyRoute";
             this.buttonGoogleApplyRoute.Size = new System.Drawing.Size(151, 42);
             this.buttonGoogleApplyRoute.TabIndex = 27;
@@ -459,7 +450,7 @@ namespace GisAddIn
             // buttonSaveGoogleKey
             // 
             this.buttonSaveGoogleKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSaveGoogleKey.Location = new System.Drawing.Point(951, 62);
+            this.buttonSaveGoogleKey.Location = new System.Drawing.Point(963, 13);
             this.buttonSaveGoogleKey.Name = "buttonSaveGoogleKey";
             this.buttonSaveGoogleKey.Size = new System.Drawing.Size(151, 34);
             this.buttonSaveGoogleKey.TabIndex = 26;
@@ -472,7 +463,7 @@ namespace GisAddIn
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(21, 99);
+            this.label5.Location = new System.Drawing.Point(14, 47);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(860, 20);
             this.label5.TabIndex = 25;
@@ -482,7 +473,7 @@ namespace GisAddIn
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(21, 65);
+            this.label15.Location = new System.Drawing.Point(14, 13);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(131, 20);
             this.label15.TabIndex = 22;
@@ -491,7 +482,7 @@ namespace GisAddIn
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(21, 235);
+            this.label19.Location = new System.Drawing.Point(14, 183);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(110, 20);
             this.label19.TabIndex = 24;
@@ -501,18 +492,18 @@ namespace GisAddIn
             // 
             this.textGoogleMapsRequestUrl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textGoogleMapsRequestUrl.Location = new System.Drawing.Point(22, 269);
+            this.textGoogleMapsRequestUrl.Location = new System.Drawing.Point(18, 208);
             this.textGoogleMapsRequestUrl.Multiline = true;
             this.textGoogleMapsRequestUrl.Name = "textGoogleMapsRequestUrl";
             this.textGoogleMapsRequestUrl.ReadOnly = true;
             this.textGoogleMapsRequestUrl.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textGoogleMapsRequestUrl.Size = new System.Drawing.Size(1080, 87);
+            this.textGoogleMapsRequestUrl.Size = new System.Drawing.Size(1096, 87);
             this.textGoogleMapsRequestUrl.TabIndex = 23;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(21, 151);
+            this.label20.Location = new System.Drawing.Point(14, 99);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(48, 20);
             this.label20.TabIndex = 14;
@@ -521,7 +512,7 @@ namespace GisAddIn
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(21, 372);
+            this.label21.Location = new System.Drawing.Point(14, 310);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(84, 20);
             this.label21.TabIndex = 20;
@@ -529,7 +520,7 @@ namespace GisAddIn
             // 
             // textGoogleMapsFrom
             // 
-            this.textGoogleMapsFrom.Location = new System.Drawing.Point(145, 151);
+            this.textGoogleMapsFrom.Location = new System.Drawing.Point(138, 99);
             this.textGoogleMapsFrom.Name = "textGoogleMapsFrom";
             this.textGoogleMapsFrom.Size = new System.Drawing.Size(201, 27);
             this.textGoogleMapsFrom.TabIndex = 15;
@@ -539,18 +530,18 @@ namespace GisAddIn
             // 
             this.textGoogleMapsResponse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textGoogleMapsResponse.Location = new System.Drawing.Point(21, 407);
+            this.textGoogleMapsResponse.Location = new System.Drawing.Point(18, 333);
             this.textGoogleMapsResponse.Multiline = true;
             this.textGoogleMapsResponse.Name = "textGoogleMapsResponse";
             this.textGoogleMapsResponse.ReadOnly = true;
             this.textGoogleMapsResponse.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textGoogleMapsResponse.Size = new System.Drawing.Size(1081, 98);
+            this.textGoogleMapsResponse.Size = new System.Drawing.Size(1096, 98);
             this.textGoogleMapsResponse.TabIndex = 19;
             // 
             // buttonGoogleQueryRoute
             // 
             this.buttonGoogleQueryRoute.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonGoogleQueryRoute.Location = new System.Drawing.Point(951, 151);
+            this.buttonGoogleQueryRoute.Location = new System.Drawing.Point(963, 102);
             this.buttonGoogleQueryRoute.Name = "buttonGoogleQueryRoute";
             this.buttonGoogleQueryRoute.Size = new System.Drawing.Size(151, 42);
             this.buttonGoogleQueryRoute.TabIndex = 17;
@@ -562,15 +553,15 @@ namespace GisAddIn
             // 
             this.textGoogleMapsKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textGoogleMapsKey.Location = new System.Drawing.Point(145, 62);
+            this.textGoogleMapsKey.Location = new System.Drawing.Point(166, 10);
             this.textGoogleMapsKey.Name = "textGoogleMapsKey";
-            this.textGoogleMapsKey.Size = new System.Drawing.Size(640, 27);
+            this.textGoogleMapsKey.Size = new System.Drawing.Size(460, 27);
             this.textGoogleMapsKey.TabIndex = 21;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(21, 191);
+            this.label22.Location = new System.Drawing.Point(14, 139);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(28, 20);
             this.label22.TabIndex = 18;
@@ -578,7 +569,7 @@ namespace GisAddIn
             // 
             // textGoogleMapsTo
             // 
-            this.textGoogleMapsTo.Location = new System.Drawing.Point(145, 188);
+            this.textGoogleMapsTo.Location = new System.Drawing.Point(138, 136);
             this.textGoogleMapsTo.Name = "textGoogleMapsTo";
             this.textGoogleMapsTo.Size = new System.Drawing.Size(201, 27);
             this.textGoogleMapsTo.TabIndex = 16;
@@ -589,7 +580,7 @@ namespace GisAddIn
             this.tabArcGIS.Controls.Add(this.label6);
             this.tabArcGIS.Location = new System.Drawing.Point(4, 29);
             this.tabArcGIS.Name = "tabArcGIS";
-            this.tabArcGIS.Size = new System.Drawing.Size(1123, 553);
+            this.tabArcGIS.Size = new System.Drawing.Size(1133, 490);
             this.tabArcGIS.TabIndex = 3;
             this.tabArcGIS.Text = "ArcGIS";
             this.tabArcGIS.UseVisualStyleBackColor = true;
@@ -816,7 +807,7 @@ namespace GisAddIn
             this.tabGisResults.Location = new System.Drawing.Point(4, 29);
             this.tabGisResults.Name = "tabGisResults";
             this.tabGisResults.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGisResults.Size = new System.Drawing.Size(1123, 553);
+            this.tabGisResults.Size = new System.Drawing.Size(1133, 490);
             this.tabGisResults.TabIndex = 1;
             this.tabGisResults.Text = "GIS Results";
             this.tabGisResults.UseVisualStyleBackColor = true;
@@ -1136,7 +1127,7 @@ namespace GisAddIn
             this.tabTools.Controls.Add(this.groupBox1);
             this.tabTools.Location = new System.Drawing.Point(4, 29);
             this.tabTools.Name = "tabTools";
-            this.tabTools.Size = new System.Drawing.Size(1123, 553);
+            this.tabTools.Size = new System.Drawing.Size(1133, 490);
             this.tabTools.TabIndex = 6;
             this.tabTools.Text = "Tools";
             this.tabTools.UseVisualStyleBackColor = true;
@@ -1271,8 +1262,30 @@ namespace GisAddIn
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1117, 547);
+            this.panel5.Size = new System.Drawing.Size(1127, 484);
             this.panel5.TabIndex = 13;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.label15);
+            this.panel6.Controls.Add(this.textGoogleMapsResponse);
+            this.panel6.Controls.Add(this.label21);
+            this.panel6.Controls.Add(this.textGoogleMapsRequestUrl);
+            this.panel6.Controls.Add(this.buttonGoogleApplyRoute);
+            this.panel6.Controls.Add(this.textGoogleMapsTo);
+            this.panel6.Controls.Add(this.buttonSaveGoogleKey);
+            this.panel6.Controls.Add(this.label22);
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Controls.Add(this.textGoogleMapsKey);
+            this.panel6.Controls.Add(this.buttonGoogleQueryRoute);
+            this.panel6.Controls.Add(this.label19);
+            this.panel6.Controls.Add(this.textGoogleMapsFrom);
+            this.panel6.Controls.Add(this.label20);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1133, 490);
+            this.panel6.TabIndex = 28;
             // 
             // FormGis
             // 
@@ -1292,7 +1305,6 @@ namespace GisAddIn
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabGoogleMaps.ResumeLayout(false);
-            this.tabGoogleMaps.PerformLayout();
             this.tabArcGIS.ResumeLayout(false);
             this.tabArcGIS.PerformLayout();
             this.tabUseAddressFile.ResumeLayout(false);
@@ -1319,6 +1331,8 @@ namespace GisAddIn
             this.panelContent.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1428,6 +1442,7 @@ namespace GisAddIn
         private TabPage tabGisResults;
         private CheckBox cbPutInBoxCenter;
         private Panel panel5;
+        private Panel panel6;
     }
 
     #endregion
