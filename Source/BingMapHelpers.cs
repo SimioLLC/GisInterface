@@ -186,7 +186,7 @@ namespace GisAddIn
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"Cannot Get KeyFile={filepath}. Err={ex}");
+                throw new ApplicationException($"Make sure you have a BingMapsKey file here={filepath}. Err={ex}");
             }
         }
 
