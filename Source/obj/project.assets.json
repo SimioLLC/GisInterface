@@ -1,0 +1,526 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.7.2": {
+      "BingMapsRESTToolkit/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        }
+      },
+      "GoogleApi/3.9.14": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "Portable.BouncyCastle": "1.8.1.3"
+        },
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MathNet.Numerics/4.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core",
+          "System.Numerics",
+          "System.Runtime.Serialization"
+        ],
+        "compile": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Portable.BouncyCastle/1.8.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win": {
+      "BingMapsRESTToolkit/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        }
+      },
+      "GoogleApi/3.9.14": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "Portable.BouncyCastle": "1.8.1.3"
+        },
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MathNet.Numerics/4.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core",
+          "System.Numerics",
+          "System.Runtime.Serialization"
+        ],
+        "compile": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Portable.BouncyCastle/1.8.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x64": {
+      "BingMapsRESTToolkit/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        }
+      },
+      "GoogleApi/3.9.14": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "Portable.BouncyCastle": "1.8.1.3"
+        },
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MathNet.Numerics/4.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core",
+          "System.Numerics",
+          "System.Runtime.Serialization"
+        ],
+        "compile": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Portable.BouncyCastle/1.8.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    },
+    ".NETFramework,Version=v4.7.2/win-x86": {
+      "BingMapsRESTToolkit/1.1.1": {
+        "type": "package",
+        "compile": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/BingMapsRESTToolkit.dll": {
+            "related": ".pdb;.XML"
+          }
+        }
+      },
+      "GoogleApi/3.9.14": {
+        "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "10.0.3",
+          "Portable.BouncyCastle": "1.8.1.3"
+        },
+        "frameworkAssemblies": [
+          "System.Net.Http"
+        ],
+        "compile": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/GoogleApi.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MathNet.Numerics/4.0.0": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System",
+          "System.Core",
+          "System.Numerics",
+          "System.Runtime.Serialization"
+        ],
+        "compile": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Newtonsoft.Json/10.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net45/Newtonsoft.Json.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Portable.BouncyCastle/1.8.1.3": {
+        "type": "package",
+        "compile": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/BouncyCastle.Crypto.dll": {
+            "related": ".xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BingMapsRESTToolkit/1.1.1": {
+      "sha512": "HGvqG5ZwM20VMd/VB78uwvp2WMm+TCSXvACOI/1jRnoScKQ7gLiytjaNfjzeYQr/tkQ/2KIpTDNM8UHspFmRlg==",
+      "type": "package",
+      "path": "bingmapsresttoolkit/1.1.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bingmapsresttoolkit.1.1.1.nupkg.sha512",
+        "bingmapsresttoolkit.nuspec",
+        "lib/dotnet/BingMapsRESTToolkit.XML",
+        "lib/dotnet/BingMapsRESTToolkit.dll",
+        "lib/dotnet/BingMapsRESTToolkit.pdb",
+        "lib/net45/BingMapsRESTToolkit.XML",
+        "lib/net45/BingMapsRESTToolkit.dll",
+        "lib/net45/BingMapsRESTToolkit.pdb",
+        "lib/netstandard2.0/BingMapsRESTToolkit.deps.json",
+        "lib/netstandard2.0/BingMapsRESTToolkit.dll",
+        "lib/netstandard2.0/BingMapsRESTToolkit.pdb",
+        "lib/portable-net45+wp8+win8/BingMapsRESTToolkit.XML",
+        "lib/portable-net45+wp8+win8/BingMapsRESTToolkit.dll",
+        "lib/portable-net45+wp8+win8/BingMapsRESTToolkit.pdb",
+        "lib/uap10.0/BingMapsRESTToolkit.XML",
+        "lib/uap10.0/BingMapsRESTToolkit.dll",
+        "lib/uap10.0/BingMapsRESTToolkit.pdb",
+        "lib/wpa81/BingMapsRESTToolkit.XML",
+        "lib/wpa81/BingMapsRESTToolkit.dll",
+        "lib/wpa81/BingMapsRESTToolkit.pdb",
+        "lib/xamarinios/BingMapsRESTToolkit.XML",
+        "lib/xamarinios/BingMapsRESTToolkit.dll",
+        "lib/xamarinios/BingMapsRESTToolkit.pdb"
+      ]
+    },
+    "GoogleApi/3.9.14": {
+      "sha512": "i/8NeXz3rHDuVTXZDtY5rmjdgTAa2+yNJGHcx0mOR/Ecz+lRcKpaLpJ+rG5Rq+zTgOS3doC2IPesTzaW8el9bg==",
+      "type": "package",
+      "path": "googleapi/3.9.14",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "googleapi.3.9.14.nupkg.sha512",
+        "googleapi.nuspec",
+        "icon.jpg",
+        "lib/net45/GoogleApi.dll",
+        "lib/net45/GoogleApi.xml",
+        "lib/netstandard1.1/GoogleApi.dll",
+        "lib/netstandard1.1/GoogleApi.xml",
+        "lib/netstandard1.4/GoogleApi.dll",
+        "lib/netstandard1.4/GoogleApi.xml",
+        "lib/netstandard2.0/GoogleApi.dll",
+        "lib/netstandard2.0/GoogleApi.xml",
+        "lib/netstandard2.1/GoogleApi.dll",
+        "lib/netstandard2.1/GoogleApi.xml"
+      ]
+    },
+    "MathNet.Numerics/4.0.0": {
+      "sha512": "2PxnBcoBCalSCCXzB0V6rZIIn+K+5Aac8FeSwMlJJXdIRskbRGTCFGlLwHQjYGfsqgVLV1qSJilp+2xrTqssmQ==",
+      "type": "package",
+      "path": "mathnet.numerics/4.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/MathNet.Numerics.dll",
+        "lib/net40/MathNet.Numerics.xml",
+        "lib/netstandard1.3/MathNet.Numerics.dll",
+        "lib/netstandard1.3/MathNet.Numerics.xml",
+        "lib/netstandard2.0/MathNet.Numerics.dll",
+        "lib/netstandard2.0/MathNet.Numerics.xml",
+        "mathnet.numerics.4.0.0.nupkg.sha512",
+        "mathnet.numerics.nuspec"
+      ]
+    },
+    "Newtonsoft.Json/10.0.3": {
+      "sha512": "hSXaFmh7hNCuEoC4XNY5DrRkLDzYHqPx/Ik23R4J86Z7PE/Y6YidhG602dFVdLBRSdG6xp9NabH3dXpcoxWvww==",
+      "type": "package",
+      "path": "newtonsoft.json/10.0.3",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.dll",
+        "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
+        "newtonsoft.json.10.0.3.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "Portable.BouncyCastle/1.8.1.3": {
+      "sha512": "1jUpszv0ETm+hl78HKnYgY3wPzt6qRtjxaPENNrGCuB8nondbR/j75WAKdd6sxXzOzBcX07WMZhZEYc4s5jVWg==",
+      "type": "package",
+      "path": "portable.bouncycastle/1.8.1.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/BouncyCastle.Crypto.dll",
+        "lib/net40/BouncyCastle.Crypto.xml",
+        "lib/netstandard1.0/BouncyCastle.Crypto.dll",
+        "lib/netstandard1.0/BouncyCastle.Crypto.xml",
+        "lib/netstandard1.3/BouncyCastle.Crypto.dll",
+        "lib/netstandard1.3/BouncyCastle.Crypto.xml",
+        "lib/netstandard2.0/BouncyCastle.Crypto.dll",
+        "lib/netstandard2.0/BouncyCastle.Crypto.xml",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/BouncyCastle.Crypto.dll",
+        "lib/portable-net40+sl5+win8+wp8+wpa81/BouncyCastle.Crypto.xml",
+        "portable.bouncycastle.1.8.1.3.nupkg.sha512",
+        "portable.bouncycastle.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.7.2": [
+      "BingMapsRESTToolkit >= 1.1.1",
+      "GoogleApi >= 3.9.14",
+      "MathNet.Numerics >= 4.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\dan_h\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\dan_h\\Source\\Repos\\GisInterface\\Source\\GisAddIn.csproj",
+      "projectName": "GisAddIn",
+      "projectPath": "C:\\Users\\dan_h\\Source\\Repos\\GisInterface\\Source\\GisAddIn.csproj",
+      "packagesPath": "C:\\Users\\dan_h\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\dan_h\\Source\\Repos\\GisInterface\\Source\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\Offline Packages",
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\dan_h\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 21.2.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net472"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\DevExpress 21.2\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net472": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net472": {
+        "dependencies": {
+          "BingMapsRESTToolkit": {
+            "target": "Package",
+            "version": "[1.1.1, )"
+          },
+          "GoogleApi": {
+            "target": "Package",
+            "version": "[3.9.14, )"
+          },
+          "MathNet.Numerics": {
+            "target": "Package",
+            "version": "[4.0.0, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}

@@ -312,7 +312,7 @@ namespace GisAddIn
                 return string.Empty;
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return string.Empty;
             }
@@ -348,7 +348,7 @@ namespace GisAddIn
                 return sb;
 
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return null;
             }
