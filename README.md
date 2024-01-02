@@ -4,4 +4,6 @@ A form is used to prompt the user for source and destination cities. Bing Maps i
 
 It also demonstrates (New! August 2020) how a file of origin/destination points can be used to query Bing/Google in a batch, store the results to a json file, and then use that json file to create Simio objects in the facility view.
 
+A video describing this step can be found here: https://www.youtube.com/watch?v=wZi8Frui8Yw
+
 Note: The users must go to Bing Maps/Google maps to get a free license key.
