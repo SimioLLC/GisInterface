@@ -1,5 +1,0 @@
-C:\Users\dan_h\Documents\SimioUserExtensions\CacheDesignAddIn.dll
-C:\Users\dan_h\Documents\SimioUserExtensions\CacheDesignAddIn.pdb
-C:\(svn azure)\SimioCloud\Source\AddIns\CacheDesign\obj\Debug\CacheDesignAddIn.csproj.CoreCompileInputs.cache
-C:\(svn azure)\SimioCloud\Source\AddIns\CacheDesign\obj\Debug\CacheDesignAddIn.dll
-C:\(svn azure)\SimioCloud\Source\AddIns\CacheDesign\obj\Debug\CacheDesignAddIn.pdb
