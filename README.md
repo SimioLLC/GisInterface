@@ -6,4 +6,4 @@ It also demonstrates (New! August 2020) how a file of origin/destination points 
 
 A video describing this step can be found here: https://www.youtube.com/watch?v=wZi8Frui8Yw
 
-Note: The users must go to Bing Maps/Google maps to get a free license key.
+Note: The users must go to Bing Maps/Google/ArcGIS maps to get a free license key.
