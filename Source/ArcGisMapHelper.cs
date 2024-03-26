@@ -146,7 +146,7 @@ namespace GisAddIn
         /// This will build much of the SimioMapRoute object.
         /// </summary>
         /// <param name="request"></param>
-        public SimioRouteResult GetRoute(string mapsKey, string originAddress, string destinationAddress )
+        SimioRouteResult IMapHelper.GetRoute(string mapsKey, string originAddress, string destinationAddress )
         {
 
             SimioRouteResult routeResult = new SimioRouteResult(); ;
@@ -260,7 +260,7 @@ namespace GisAddIn
                         var routeResponse = JsonSerializer.Deserialize<AgRouteResponse>(responseString);
                         if (routeResponse?.routes != null && routeResponse?.routes.features.Count > 0)
                         {
-                            result.Route = new SimioMapRoute();
+                            result.Route = new SimioMapRoute(addressStart, addressFinish);
                             var feature = routeResponse.routes.features[0];
 
                             var paths = feature.geometry.paths;
@@ -270,6 +270,9 @@ namespace GisAddIn
                                 int segmentIndex = 0;
                                 int pairIndex = 0;
                                 MapSegment segment = null;
+
+                                // Each coordinate pair will belong to two segments, so use
+                                // the index modulus to create segments from the path.
                                 foreach (var pair in path)
                                 {
                                     MapCoordinate coord = new MapCoordinate(pair[1], pair[0]);

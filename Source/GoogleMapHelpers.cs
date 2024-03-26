@@ -15,8 +15,14 @@ using GoogleApi.Entities.Maps.Directions.Response;
 using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using GoogleApi.Entities.Maps.Geocoding.PlusCode.Request;
-using Newtonsoft.Json.Linq;
+//using Newtonsoft.Json.Linq;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using GoogleApi.Entities.Maps.Routes.Directions.Response;
+using System.Configuration;
 
 
 namespace GisAddIn
@@ -31,134 +37,8 @@ namespace GisAddIn
             return $"Google Maps.";
         }
 
-        /// <summary>
-        /// An asynchronous fetch of a map route (untested)
-        /// </summary>
-        /// <param name="mapData"></param>
-        /// <param name="googleMapsKey"></param>
-        /// <param name="StartStopList"></param>
-        public bool GetRoute(string googleMapsKey, string originAddress, string destinationAddress,
-            out SimioMapRoute mapRoute,
-             out string requestUrl, out string explanation)
-        {
-            requestUrl = "";
-            explanation = "";
-            mapRoute = null;
-            try
-            {
-                mapRoute = new SimioMapRoute(originAddress, destinationAddress);
+        HttpClient myHttpClient = new HttpClient();
 
-                Address addrOrigin = new Address(originAddress);
-                Address addrDestination = new Address(destinationAddress);
-
-                int option = 2;
-
-                if (option == 1)
-                {
-
-                    DirectionsRequest request = new DirectionsRequest
-                    {
-                        Key = googleMapsKey,
-                        Origin = new GoogleApi.Entities.Maps.Common.LocationEx(addrOrigin),
-                        Destination = new GoogleApi.Entities.Maps.Common.LocationEx(addrDestination)
-                    };
-
-                    requestUrl = request.ToString();
-                    var task = GoogleApi.GoogleMaps.Directions.QueryAsync(request);
-                    bool completedInTime = task.Wait(TimeSpan.FromSeconds(10));
-                    if (!completedInTime)
-                    {
-                        throw new Exception($"Timed out waiting for Route result from Google");
-                    }
-
-                    var result = task.Result;
-                }
-                else
-                {
-                    var gRoutes = new GoogleMapsRouteGenerator(googleMapsKey);
-                    var task = gRoutes.GetRouteAsync(originAddress, destinationAddress);
-
-                    bool completedInTime = task.Wait(TimeSpan.FromSeconds(10));
-                    if (!completedInTime)
-                    {
-                        throw new Exception($"Timed out waiting for Route result from Google");
-                    }
-                }
-
-                mapRoute.SegmentList.Clear();
-
-                //SimioMapRoute result = new SimioMapRoute();
-                //// .. wait for response ..
-                //// Response has Routes, and Routes have legs. Typically 1-2 routes
-                //foreach (Route route in result.Routes)
-                //{
-                //    // Route has an overview summary and boundingbox
-                //    // We could make the bounding box from the one that Bing Maps sends us,
-                //    //but we're going to do our own to match the usa 'map'.
-                //    ////PointF ptLoc = new PointF((float)route.Bounds.NorthEast.Latitude, (float)route.Bounds.NorthEast.Longitude);
-                //    ////float width = (float)(route.Bounds.NorthEast.Latitude - route.Bounds.SouthWest.Latitude);
-                //    ////float height = (float)(route.Bounds.NorthEast.Longitude - route.Bounds.SouthWest.Longitude);
-
-                //    ////// We're going to bound according to the contiguous USA, which is appox.
-                //    ////// lat 20 to 50, and lon -60 to -130
-                //    ////PointF ptLoc = lonlatBox.Location; // new PointF( -130f, 20f);
-                //    ////float width = lonlatBox.Width; // 70f;
-                //    ////float height = lonlatBox.Height; // 30f; 
-
-                //    ////// Turning the thing on its side, since we want latitude to be 'Y'
-                //    ////mapData.LonLatBoundingBox = new RectangleF(ptLoc.X, ptLoc.Y, width, height);
-                //    ////mapData.Origin = new PointF(ptLoc.X + width / 2f, ptLoc.Y + height / 2f);
-
-                //    ////mapData.SimioScaling = simioScaling;
-
-                //    int ii = 0;
-                //    StringBuilder sb = new StringBuilder();
-                //    foreach (Leg leg in route.Legs)
-                //    {
-                //        // Legs have distance and duration
-                //        // and StartLocation and address, and EndLocation and address
-                //        foreach (Step step in leg.Steps)
-                //        {
-                //            double lat = step.StartLocation.Latitude;
-                //            double lon = step.StartLocation.Longitude;
-                //            MapCoordinate mcStart = new MapCoordinate(lat, lon);
-
-                //            lat = step.EndLocation.Latitude;
-                //            lon = step.EndLocation.Longitude;
-
-                //            MapCoordinate mcEnd = new MapCoordinate(lat, lon);
-                //            MapSegment segment = null;
-
-                //            if (ii == 0)
-                //            {
-                //                segment = mapRoute.AddFirstSegment(mcStart, mcEnd);
-                //            }
-                //            else
-                //            {
-                //                segment = mapRoute.AppendSegment(mcEnd);
-                //            }
-
-                //            // Now add Google-specific information
-                //            segment.Distance = step.Distance.Value;
-                //            segment.Duration = step.Duration.Value;
-
-                //            ii++;
-                //            sb.AppendLine($"Instructions={step.HtmlInstructions} Distance={step.Distance.Text} >> {step.Duration.Text}");
-                //        } // foreach step
-
-
-
-                //    } // foreach leg
-                //    explanation = sb.ToString();
-                //}
-                return true;
-            }
-            catch (Exception ex)
-            {
-                explanation = $"From={originAddress} To={destinationAddress} Err={ex.Message}";
-                return false;
-            }
-        }
 
 
         /// <summary>
@@ -269,65 +149,199 @@ namespace GisAddIn
             }
         }
 
-        SimioRouteResult IMapHelper.GetRoute(string mapsKey, string originAddress, string destinationAddress)
+        public SimioRouteResult GetRoute(string mapsKey, string originAddress, string destinationAddress)
         {
             throw new NotImplementedException();
         }
 
-        Task<SimioRouteResult> IMapHelper.GetRouteAsync(string mapsKey, string originAddress, string destinationAddress)
+        public async Task<SimioRouteResult> GetRouteAsync(string mapKey, string originAddress, string destinationAddress)
         {
-            throw new NotImplementedException();
-        }
-    }
+            var baseUrl = "https://maps.googleapis.com/maps/api/directions/json";
+            var requestUri = $"{baseUrl}?origin={originAddress}&destination={destinationAddress}&key={mapKey}";
 
+            var result = new SimioRouteResult();
 
-    public class GoogleMapsRouteGenerator
-    {
-        private readonly string _apiKey;
-
-        public GoogleMapsRouteGenerator(string apiKey)
-        {
-            _apiKey = apiKey;
-        }
-
-        public async Task GetRouteAsync(string originAddress, string destinationAddress)
-        {
-            string baseUrl = "https://maps.googleapis.com/maps/api/directions/json";
-            string requestUri = $"{baseUrl}?origin={Uri.EscapeDataString(originAddress)}&destination={Uri.EscapeDataString(destinationAddress)}&key={_apiKey}";
-
-            using (HttpClient client = new HttpClient())
+            using (HttpResponseMessage response = await myHttpClient.GetAsync(requestUri))
             {
-                client.Timeout = new TimeSpan(0, 0, 20);
-                
-                HttpResponseMessage response = await client.GetAsync(requestUri);
                 if (response.IsSuccessStatusCode)
                 {
-                    string json = await response.Content.ReadAsStringAsync();
-                    JObject jsonResponse = JObject.Parse(json);
+                    // need these to return to Form for display
+                    var responseBody = await response.Content.ReadAsStringAsync();
 
-                    var routes = jsonResponse["routes"];
-                    if (routes != null && routes.HasValues)
+                    string reasonPhrase = response.ReasonPhrase;
+                    HttpResponseHeaders headers = response.Headers;
+                    HttpStatusCode code = response.StatusCode;
+
+                    DirectionsResponse directionResponse = JsonSerializer.Deserialize<DirectionsResponse>(responseBody);
+                    // Assuming you want to process the first route, first leg, and its steps
+                    if (directionResponse?.Routes != null && directionResponse.Routes.Count > 0)
                     {
-                        var legs = routes[0]["legs"];
-                        foreach (var leg in legs)
+                        result.Route = new SimioMapRoute(originAddress, destinationAddress);
+                        int segmentIndex = 0;
+                        foreach (var step in directionResponse.Routes[0].Legs[0].Steps)
                         {
-                            string distance = leg["distance"]["text"].ToString();
-                            string duration = leg["duration"]["text"].ToString();
-                            Console.WriteLine($"Distance: {distance}, Duration: {duration}");
-                            // Here you could further parse the route details or display the route on a map
+                            MapCoordinate coordStart = new MapCoordinate(step.StartLocation.Latitude, step.StartLocation.Longitude);
+                            MapCoordinate coordEnd = new MapCoordinate(step.EndLocation.Latitude, step.EndLocation.Longitude);
+
+                            MapSegment segment = new MapSegment(segmentIndex, coordStart, coordEnd);
+
+                            segment.Duration = step.Duration.Value;
+                            segment.Distance = step.Distance.Value;
+
+                            result.Route.SegmentList.Add(segment);
+                            segmentIndex++;
                         }
                     }
-                    else
-                    {
-                        Console.WriteLine("No route found.");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine($"Error: {response.StatusCode}");
-                }
-            }
+                    return result;
+
+                } // using response
+
+                result.ErrorMessage = $"Could not retrieve route";
+                return result;
+
+            } // method
         }
+
+        //================================================================
+        // These classes are used to deserialize the json response
+        //================================================================
+
+        /// <summary>
+        /// Top level. A list of routes
+        /// </summary>
+        public class DirectionsResponse
+        {
+            [JsonPropertyName("geocoded_waypoints")]
+            public List<GeocodedWaypoint> GeocodedWaypoints { get; set; }
+
+            [JsonPropertyName("routes")]
+            public List<Route> Routes { get; set; }
+
+            [JsonPropertyName("status")]
+            public string Status { get; set; }
+        }
+
+        public class GeocodedWaypoint
+        {
+            [JsonPropertyName("geocoder_status")]
+            public string GeocoderStatus { get; set; }
+
+            [JsonPropertyName("place_id")]
+            public string PlaceId { get; set; }
+
+            [JsonPropertyName("types")]
+            public List<string> Types { get; set; }
+        }
+
+        public class Route
+        {
+            [JsonPropertyName("legs")]
+            public List<Leg> Legs { get; set; }
+
+            // Include other properties of a Route as needed
+        }
+
+        public class Leg
+        {
+            [JsonPropertyName("steps")]
+            public List<Step> Steps { get; set; }
+
+            // Include other properties of a Leg as needed
+        }
+
+        public class Step
+        {
+            [JsonPropertyName("start_location")]
+            public Location StartLocation { get; set; }
+
+            [JsonPropertyName("end_location")]
+            public Location EndLocation { get; set; }
+
+            [JsonPropertyName("distance")]
+            public TextValue Distance { get; set; }
+
+            [JsonPropertyName("duration")]
+            public TextValue Duration { get; set; }
+
+            [JsonPropertyName("html_instructions")]
+            public string HtmlInstructions { get; set; }
+
+            [JsonPropertyName("polyline")]
+            public Polyline Polyline { get; set; }
+
+            [JsonPropertyName("travel_mode")]
+            public string TravelMode { get; set; }
+
+            [JsonPropertyName("maneuver")]
+            public string Maneuver { get; set; } // Optional, not always present
+
+            [JsonPropertyName("transit_details")]
+            public TransitDetails TransitDetails { get; set; } // Optional, for transit mode
+
+            // Include other properties of a Step as needed
+        }
+        public class TextValue
+        {
+            [JsonPropertyName("text")]
+            public string Text { get; set; }
+
+            [JsonPropertyName("value")]
+            public int Value { get; set; }
+        }
+
+        public class Location
+        {
+            [JsonPropertyName("lat")]
+            public double Latitude { get; set; }
+
+            [JsonPropertyName("lng")]
+            public double Longitude { get; set; }
+        }
+
+        public class Polyline
+        {
+            [JsonPropertyName("points")]
+            public string Points { get; set; }
+        }
+
+        // Example of a TransitDetails class, focusing on a few properties for demonstration
+        public class TransitDetails
+        {
+            [JsonPropertyName("arrival_stop")]
+            public TransitStop ArrivalStop { get; set; }
+
+            [JsonPropertyName("departure_stop")]
+            public TransitStop DepartureStop { get; set; }
+
+            [JsonPropertyName("line")]
+            public TransitLine Line { get; set; }
+
+            // Add additional properties as needed
+        }
+
+        public class TransitStop
+        {
+            [JsonPropertyName("name")]
+            public string Name { get; set; }
+
+            [JsonPropertyName("location")]
+            public Location Location { get; set; }
+        }
+
+        public class TransitLine
+        {
+            [JsonPropertyName("name")]
+            public string Name { get; set; }
+
+            [JsonPropertyName("short_name")]
+            public string ShortName { get; set; }
+
+            [JsonPropertyName("color")]
+            public string Color { get; set; }
+
+            // Add additional properties as needed
+        }
+
     }
 
 }

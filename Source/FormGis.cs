@@ -106,23 +106,22 @@ namespace GisAddIn
         }
 
 
-        private void buttonQueryBingMaps_Click(object sender, EventArgs e)
+        private async void buttonQueryBingMaps_Click(object sender, EventArgs e)
         {
             try
             {
                 textBingMapsResponse.Text = "";
 
-                if (!BingMapHelper.GetRoute(textBingMapsKey.Text, textBingMapsFrom.Text, textBingMapsTo.Text,
-                    out SimioMapRoute mapRoute,
-                    out string requestUrl, out string explanation))
+                SimioRouteResult result = await BingMapHelper.GetRouteAsync(textBingMapsKey.Text, textBingMapsFrom.Text, textBingMapsTo.Text);
+                if ( !String.IsNullOrEmpty(result.ErrorMessage))
                 {
-                    alert($"Cannot Get Route. Err={explanation}");
+                    alert($"Cannot Get Route. Err={result.ErrorMessage}");
                     return;
                 }
 
-                MapRoute = mapRoute;
-                textBingMapsRequestUrl.Text = requestUrl;
-                textBingMapsResponse.Text = explanation;
+                MapRoute = result.Route;
+                textBingMapsRequestUrl.Text = result.Request;
+                textBingMapsResponse.Text = result.Response;
 
             }
             catch (Exception ex)
@@ -493,31 +492,27 @@ namespace GisAddIn
 
         }
 
-        private void buttonGoogleQueryRoute_Click(object sender, EventArgs e)
+        private async void buttonGoogleQueryRoute_Click(object sender, EventArgs e)
         {
             try
             {
 
-                MapRoute.StartName = textGoogleMapsFrom.Text;
-                MapRoute.EndName = textGoogleMapsTo.Text;
-
-                if (!GoogleMapHelper.GetRoute(textGoogleMapsKey.Text, textGoogleMapsFrom.Text, textGoogleMapsTo.Text,
-                    out SimioMapRoute mapRoute,
-                    out string requestUrl, out string explanation))
+                SimioRouteResult result = await GoogleMapHelper.GetRouteAsync(textGoogleMapsKey.Text, textGoogleMapsFrom.Text, textGoogleMapsTo.Text);
+                if (!String.IsNullOrEmpty(result.ErrorMessage))
                 {
-                    alert($"Cannot get Route. Err={explanation}");
+                    alert($"Cannot Get Route. Err={result.ErrorMessage}");
                     return;
                 }
 
-                MapRoute = mapRoute;
+                MapRoute = result.Route;
 
-                textGoogleMapsRequestUrl.Text = requestUrl;
-                textGoogleMapsResponse.Text = explanation;
+                textGoogleMapsRequestUrl.Text = result.Request;
+                textGoogleMapsResponse.Text = result.Response;
 
             }
             catch (Exception ex)
             {
-                throw new ApplicationException($"QueryBingMaps Error={ex}");
+                throw new ApplicationException($"QueryGoogleMaps Error={ex}");
             }
 
         }
